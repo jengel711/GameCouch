@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+<title>Employee Search</title>
+<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body id="main">
+<h1>By ID</h1>
+<h:form id="CustomerSearch">
+<h:messages />
+
+<label>Enter Customer ID: </label>
+<h:inputText id="custID" value="#{cust.id}" >
+</h:inputText><br/><br/>
+
+
+<h:commandButton id="submit" value="Submit" action="SearchResult" />
+</h:form>
+</h:body>
+</html>

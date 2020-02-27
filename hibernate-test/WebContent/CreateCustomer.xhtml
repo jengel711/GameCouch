@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+<title>Employee Search</title>
+<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body id="main">
+<h1>Create new customer</h1>
+<h:form id="NewCustomer">
+<h:messages />
+
+<label>Enter your name: </label>
+<h:inputText id="custName" value="#{customer.name}" >
+</h:inputText><br/><br/>
+<label>Create a password: </label>
+<h:inputText id="custPass" value="#{customer.password}" >
+</h:inputText><br/><br/>
+<label>Select your preferred location: </label>
+<h:selectOneMenu value = "#{customer.defaultLocation}"> 
+   <f:selectItems value = "#{location.getLocations()}" var="location" itemValue="#{location}" itemLabel="#{location.name}"/> 
+</h:selectOneMenu> <br/>
+
+
+<h:commandButton id="submit" value="Submit" action="#{customer.create()}" />
+</h:form>
+</h:body>
+</html>
