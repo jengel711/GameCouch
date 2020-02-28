@@ -83,14 +83,5 @@ public class Location {
     public String toString() {
         return (id.toString());
     }
-    /*
-    @Override
-    public boolean equals(Object o) {//string compare is bad, so why do I have to do this???
-    	return (this.getId().toString().equals(o));
-    }
-   */
-    @Override
-    public int hashCode( ) {
-    	return Objects.hash(name,state);
-    }
+
 }
