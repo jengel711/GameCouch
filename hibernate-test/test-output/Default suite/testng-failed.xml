@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="edu.cscc.hibernate_test.LocationTest">
+      <class name="edu.cscc.hibernate_test.LoginTest">
         <methods>
-          <include name="f"/>
+          <include name="tryLogin"/>
         </methods>
-      </class> <!-- edu.cscc.hibernate_test.LocationTest -->
+      </class> <!-- edu.cscc.hibernate_test.LoginTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

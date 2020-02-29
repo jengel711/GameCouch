@@ -2,20 +2,17 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
                                          "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
- <session-factory>
+ <session-factory name="">
   <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-  <property name="hibernate.connection.password">123</property>
-  <property name="hibernate.connection.url">jdbc:sqlserver://localhost:1434;databaseName=hibertest</property>
-  <property name="hibernate.connection.username">testuser</property>
+  <property name="hibernate.connection.password">gcsgcsgcs</property>
+  <property name="hibernate.connection.url">jdbc:sqlserver://gamecouchdb.cbojpj3zkht8.us-east-1.rds.amazonaws.com;databaseName=gcsdemo</property>
+  <property name="hibernate.connection.username">admin</property>
   <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
-  
-    <property name="hbm2ddl.auto">validate</property>
-  
-    <!-- JDBC connection pool (use the built-in) -->
-    <property name="connection.pool_size">1</property>
-    <property name="current_session_context_class">thread</property>
- 
-     <mapping class="edu.cscc.hibernate_test.Customer" />
-     <mapping class="edu.cscc.hibernate_test.Location" />
+  <property name="hbm2ddl.auto">validate</property>
+  <!-- JDBC connection pool (use the built-in) -->
+  <property name="connection.pool_size">1</property>
+  <property name="current_session_context_class">thread</property>
+  <mapping class="edu.cscc.hibernate_test.Customer"/>
+  <mapping class="edu.cscc.hibernate_test.Location"/>
  </session-factory>
 </hibernate-configuration>

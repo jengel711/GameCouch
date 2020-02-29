@@ -20,6 +20,10 @@ public class Lookup {
 		return session.get(Customer.class, id);
 	}
 	
+	public Customer getCustomerByEmail(String email) {
+		return session.bySimpleNaturalId(Customer.class).load(email);
+	}
+	
     public Location getLocationByID(Long id) {
 		return session.get(Location.class, id);
 	}

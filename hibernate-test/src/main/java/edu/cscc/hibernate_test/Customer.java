@@ -6,6 +6,7 @@ import javax.persistence.*;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.hibernate.Session;
+import org.hibernate.annotations.NaturalId;
   
 
 @ManagedBean(name="customer")
@@ -20,6 +21,10 @@ public class Customer {
     private Long id;
  
     private String name;
+    
+    @NaturalId(mutable=true)
+    private String email; //add index?
+    
     private String password;
 
 	@ManyToOne
@@ -27,8 +32,9 @@ public class Customer {
  
     public Customer() {}
  
-    public Customer(String name, String password, Location location) {
+    public Customer(String name, String email, String password, Location location) { //currently used only by buildDB?
         this.name = name;
+        this.email = email;
         this.password = password;
         this.defaultLocation = location;
     }     
@@ -42,9 +48,16 @@ public class Customer {
 		return password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassword(String password) { //add hash function with dynamic salt
+		this.password = password.strip();
 	}
+	
+	public boolean verifyPassword(String password) { //update to match setPassword
+		String input = password.strip();
+		String stored = getPassword();
+		return input.equals(stored);
+	}
+	
  
     public Long getId() {
         return id;
@@ -59,10 +72,18 @@ public class Customer {
     }
  
     public void setName(String name) {
-        this.name = name;
+        this.name = name.strip();
     }
  
-    public Location getDefaultLocation() {
+    public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email.strip();//validation?
+	}
+
+	public Location getDefaultLocation() {
         return defaultLocation;
     }
  
@@ -76,7 +97,7 @@ public class Customer {
                 + defaultLocation.toString() + "]";
     }
     
-    public void create( ) {
+    public String create( ) { //need to access this from a controller with validation (what?) and a success page that links to the login page
     	try (Session session = HibernateUtil.getSessionFactory().openSession();) {
 			session.beginTransaction();
 			session.save(this);
@@ -86,6 +107,7 @@ public class Customer {
 			logger.error("Failed to create customer", e); //$NON-NLS-1$
 			
 		}
+    	return "Login";
     }
  
 }

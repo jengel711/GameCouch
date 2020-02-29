@@ -16,12 +16,11 @@
 <h:inputText id="custEmail" value="#{login.email}" required="true">
 </h:inputText><br/><br/>
 <label>Password:</label>
-<h:inputSecret id="password" value="#{login.password}" required="true">
+<h:inputSecret id="password" value="#{login.pasword}" required="true">
 </h:inputSecret><br/><br/>
 
-<h:commandButton id="submit" value="Submit" action="#{login.doLogin()}" />
-<br/><br/>
-New user? <h:link value="Sign up" outcome="CreateCustomer" />
+
+<h:commandButton id="submit" value="Submit" action="SearchResult" />
 
 </h:form>
 </h:body>

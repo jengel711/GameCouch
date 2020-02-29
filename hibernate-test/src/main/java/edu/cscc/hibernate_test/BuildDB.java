@@ -22,11 +22,11 @@ public class BuildDB {
 			session.beginTransaction();
 			Location location = new Location("Main", State.NEW_YORK);
 			session.save(location);
-			session.save(new Customer("Jakab Gipsz", "password", location));
-			session.save(new Customer("Captain Nemo", "test123", location));
+			session.save(new Customer("Jakab Gipsz", "jgipsz@example.com", "password", location));
+			session.save(new Customer("Captain Nemo", "cptnemo@example.com", "test123", location));
 			location = new Location ("Columbus", State.OHIO);
 			session.save(location);
-			session.save(new Customer("John Smith", "deadbeef", location));
+			session.save(new Customer("John Smith", "jsmith@example.com", "deadbeef", location));
 			session.getTransaction().commit();
 
 		}

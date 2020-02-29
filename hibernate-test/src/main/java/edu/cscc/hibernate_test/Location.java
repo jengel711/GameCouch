@@ -2,7 +2,6 @@ package edu.cscc.hibernate_test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -19,7 +18,9 @@ public class Location {
     private Long id;
     
     private String name;
-    private State state; //using this enum stores State as an int. This seems less than ideal.
+    
+    @Enumerated(EnumType.STRING)
+    private State state;
     
     @Transient
     private static List<Location> locations; 
@@ -77,6 +78,10 @@ public class Location {
     	}
     		
     	return locations;
+    }
+    
+    public String getNameAndState() {
+    	return (name + ", "+ state);
     }
     
     @Override

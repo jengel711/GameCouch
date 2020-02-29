@@ -4,7 +4,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html">
 <h:head>
-<title>Employee Search</title>
+<title>Create Customer</title>
 <h:outputStylesheet library="css" name="style.css" />
 </h:head>
 <h:body id="main">
@@ -12,12 +12,15 @@
 <h:form id="NewCustomer">
 <h:messages />
 
-<label>Enter your name: </label>
-<h:inputText id="custName" value="#{customer.name}" >
+<label>Full name: </label>
+<h:inputText id="custName" value="#{customer.name}" required="true">
+</h:inputText><br/><br/>
+<label>Email: </label>
+<h:inputText id="custEmail" value="#{customer.email}" required="true">
 </h:inputText><br/><br/>
 <label>Create a password: </label>
-<h:inputText id="custPass" value="#{customer.password}" >
-</h:inputText><br/><br/>
+<h:inputSecret id="custPass" value="#{customer.password}" required="true">
+</h:inputSecret><br/>(don't use a real password, this is a demo)<br/><br/>
 <label>Select your preferred location: </label>
 <h:selectOneMenu value = "#{customer.defaultLocation}"> 
    <f:selectItems value = "#{location.getLocations()}" var="location" itemValue="#{location}" itemLabel="#{location.name}"/> 
