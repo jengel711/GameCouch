@@ -46,8 +46,10 @@ public class Customer {
 		this.name = name;
 	}
 
-	public byte[] getPassword() {
-		return password;
+	public String getPassword() {
+		if (password == null)
+			return "";
+		return new String(password);
 	}
 
 	public void setPassword(String password) { 
