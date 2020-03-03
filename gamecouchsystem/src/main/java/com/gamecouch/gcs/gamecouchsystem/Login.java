@@ -53,15 +53,17 @@ public class Login {
 		customer = lookup.getCustomerByEmail(email);
 		if (customer != null) {
 			int attempts = customer.getLoginAttempts();
+			Date lastAttempt = customer.getLastAttempt(); //might be null, but only if attempts = 0.
+			Date now = new Date();
 			if (attempts > 0) {
 				long wait = attempts * 5 * 1000L;
-				Date waitingPeriod = new Date((wait < MAX_WAIT) ? wait : MAX_WAIT);  //Wait increases by 5 seconds per attempt
-				if (waitingPeriod.after(new Date()))
-					return showError("Please wait " + wait/1000 + " seconds and try again.");
+				Date waitingPeriod = new Date(lastAttempt.getTime()+((wait < MAX_WAIT) ? wait : MAX_WAIT));  //Wait increases by 5 seconds per attempt
+				if (waitingPeriod.after(now))
+					return showError("Please wait " + wait/1000 + " seconds and try again.");//message isn't great
 			}
 				
 			try {
-				validate = customer.verifyPassword(password);
+				validate = customer.verifyPassword(password, lookup);
 			}
 			catch (GeneralSecurityException e) {
 				return showError("Sever security error.");

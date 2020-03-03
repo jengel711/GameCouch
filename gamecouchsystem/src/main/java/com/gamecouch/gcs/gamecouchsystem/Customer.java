@@ -26,6 +26,7 @@ public class Customer {
 
 	private byte[] password;
 	private int loginAttempts = 0;
+	private Date lastAttempt;
 	
 	@ManyToOne
 	private Location defaultLocation;
@@ -54,16 +55,18 @@ public class Customer {
 		this.password = passwordHash.getPassword();
 	}
 
-	public boolean verifyPassword(String input) throws GeneralSecurityException {
+	public boolean verifyPassword(String input, Lookup lookup) throws GeneralSecurityException {
 		var storedPassword = new Password(password);
 		boolean result = storedPassword.verifyPassword(input);
+		lookup.getSession().beginTransaction();
 		if (result) {
 			loginAttempts = 0;
 		}			
 		else {
-			setLoginAttempts(loginAttempts + 1); //doesn't work, needs database support
+			setLoginAttempts(loginAttempts + 1); 
+			lastAttempt = new Date();
 		}
-			
+		lookup.getSession().getTransaction().commit();
 		return result;
 	}
 
@@ -73,6 +76,14 @@ public class Customer {
 
 	public void setLoginAttempts(int loginAttempts) {
 		this.loginAttempts = loginAttempts;
+	}
+
+	public Date getLastAttempt() {
+		return lastAttempt;
+	}
+
+	public void setLastAttempt(Date lastAttempt) {
+		this.lastAttempt = lastAttempt;
 	}
 
 	public Long getId() {

@@ -15,7 +15,15 @@ public class Lookup {
     	if (session == null)
     		initSession();
     }
-	
+    
+    public void close() {
+    	session.close();
+    }
+    
+    public Session getSession( ) {
+    	return session;
+    }
+    
 	public Customer getCustomerByID(Long id) {
 		return session.get(Customer.class, id);
 	}
@@ -38,5 +46,6 @@ public class Lookup {
     private static void initSession() {
     	session = HibernateUtil.getSessionFactory().openSession();
     }
+    
 
 }
