@@ -1,5 +1,8 @@
 package com.gamecouch.gcs.gamecouchsystem;
 
+import java.security.GeneralSecurityException;
+import java.util.Date;
+
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -12,6 +15,8 @@ public class Login {
 	private String email;
 	private String password;
 	private Customer customer;
+
+	private static final long MAX_WAIT = 60 * 1000L; //seconds
 	
 	public Login() {
 		
@@ -47,16 +52,33 @@ public class Login {
 		var lookup = new Lookup();
 		customer = lookup.getCustomerByEmail(email);
 		if (customer != null) {
-			validate = customer.verifyPassword(password);
+			int attempts = customer.getLoginAttempts();
+			if (attempts > 0) {
+				long wait = attempts * 5 * 1000L;
+				Date waitingPeriod = new Date((wait < MAX_WAIT) ? wait : MAX_WAIT);  //Wait increases by 5 seconds per attempt
+				if (waitingPeriod.after(new Date()))
+					return showError("Please wait " + wait/1000 + " seconds and try again.");
+			}
+				
+			try {
+				validate = customer.verifyPassword(password);
+			}
+			catch (GeneralSecurityException e) {
+				return showError("Sever security error.");
+			}
 		}
 		
 		if (validate)
 			return "Profile";
 		else {
-			FacesMessage message = new FacesMessage("Unknown username or bad password.");
-			FacesContext.getCurrentInstance().addMessage("form:message", message);
-			return "Login";
+			return showError("Unknown username or bad password.");
 		}
+	}
+	
+	private String showError(String error) {
+		FacesMessage message = new FacesMessage(error);
+		FacesContext.getCurrentInstance().addMessage("form:message", message);
+		return "Login";
 	}
 
 }
