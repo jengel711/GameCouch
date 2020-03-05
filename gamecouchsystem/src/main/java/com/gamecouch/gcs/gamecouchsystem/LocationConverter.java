@@ -8,6 +8,10 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
  
+/**
+ * @author Alan Bolte
+ *
+ */
 @FacesConverter(forClass=Location.class)
 public class LocationConverter implements Converter {
   

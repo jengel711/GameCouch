@@ -8,6 +8,10 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
+/**
+ * @author Alan Bolte
+ *
+ */
 @ManagedBean(name="login")
 @RequestScoped
 public class Login {

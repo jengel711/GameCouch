@@ -7,6 +7,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.*;
  
+/**
+ * @author Alan Bolte
+ *
+ */
 @ManagedBean(name="location")
 @ViewScoped
 @Entity

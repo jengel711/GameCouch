@@ -8,6 +8,10 @@ import org.hibernate.Session;
 //Current pattern holds open a permanent session for lookups. Is this a good design?
 //seems to throw some errors regarding memory leak and connection reset in Tomcat console?
 
+/**
+ * @author Alan Bolte
+ *
+ */
 public class Lookup {
 	private static Session session;
 	

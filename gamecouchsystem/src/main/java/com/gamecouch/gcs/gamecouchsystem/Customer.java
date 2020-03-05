@@ -10,6 +10,10 @@ import org.hibernate.Session;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.type.DateType;
 
+/**
+ * @author Alan Bolte
+ *
+ */
 @ManagedBean(name = "customer")
 @RequestScoped
 @Entity

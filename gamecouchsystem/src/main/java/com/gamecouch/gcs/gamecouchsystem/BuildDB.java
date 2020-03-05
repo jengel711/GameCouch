@@ -1,6 +1,10 @@
 package com.gamecouch.gcs.gamecouchsystem;
 import org.hibernate.*;
 
+/**
+ * @author Alan Bolte
+ *
+ */
 public class BuildDB {
 	public static void main(String[] args) {
 		try (Session session = HibernateUtil.getSessionFactory().openSession();) {

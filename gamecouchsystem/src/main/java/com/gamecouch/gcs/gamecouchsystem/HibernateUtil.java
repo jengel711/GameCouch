@@ -3,6 +3,10 @@ package com.gamecouch.gcs.gamecouchsystem;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
   
+/**
+ * @author Alan Bolte
+ *
+ */
 public class HibernateUtil {
   
     private static final SessionFactory sessionFactory = buildSessionFactory();
