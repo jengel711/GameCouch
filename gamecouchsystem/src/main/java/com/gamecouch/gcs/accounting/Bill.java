@@ -4,8 +4,7 @@
 package com.gamecouch.gcs.accounting;
 
 import java.util.Date;
-import javax.persistence.Id;
-import org.hibernate.annotations.Table;
+import javax.persistence.*;
 
 
 /**
@@ -13,8 +12,10 @@ import org.hibernate.annotations.Table;
  *
  */
 
-@Table(appliesTo="Bill")
+@Entity
 public class Bill extends Invoice {
+	
+	@ManyToOne
 	private Vendor vendor;
 	//private InventoryCollection inventory
 

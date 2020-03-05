@@ -5,19 +5,18 @@ package com.gamecouch.gcs.accounting;
 
 import java.util.Date;
 
-import javax.persistence.Id;
-import org.hibernate.annotations.Table;
-
+import javax.persistence.*;
 /**
  * @author Alan Bolte
  *
  */
 
 
-@Table(appliesTo="JournalEntry")
+@Entity
 public class JournalEntry {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private Date date;	
 	

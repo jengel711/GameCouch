@@ -4,20 +4,24 @@
 package com.gamecouch.gcs.accounting;
 
 import java.math.BigDecimal;
-import javax.persistence.Id;
-import org.hibernate.annotations.Table;
+import javax.persistence.*;
 
 /**
  * @author Alan Bolte
  *
  */
 
-@Table(appliesTo="JournalLine")
+@Entity
 public class JournalLine {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+	@ManyToOne
 	private JournalEntry journal;
-	private int lineNumber; 	
+	private int lineNumber;
+	
+	@ManyToOne
 	private Account account;
 	private BigDecimal debit;
 	private BigDecimal credit;

@@ -5,13 +5,23 @@ package com.gamecouch.gcs.accounting;
 
 import java.util.Date;
 
+import javax.persistence.*;
+
 /**
  * @author Alan Bolte
  *
  */
+
+@Entity
+@Inheritance
 public abstract class Invoice {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private Date dueDate;
+	
+	@ManyToOne
 	private JournalEntry journalEntry;
 	
 	public Invoice(long id, Date dueDate, JournalEntry journalEntry) {

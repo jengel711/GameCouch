@@ -7,7 +7,14 @@ package com.gamecouch.gcs.accounting;
  * @author Alan Bolte
  *
  */
+
+import javax.persistence.*;
+
+@Entity
 public class Vendor {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String name;
 	private String address; //could be decomposed.

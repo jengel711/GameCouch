@@ -4,34 +4,41 @@
 package com.gamecouch.gcs.accounting;
 
 import java.math.BigDecimal;
-import javax.persistence.Id;
-import org.hibernate.annotations.Table;
+
+import javax.persistence.*;
 
 
 /**
  * @author Alan Bolte
  *
  */
-@Table(appliesTo="Account")
+@Entity
 public class Account {
 	
 	@Id
-	private long accountNumber;//don't auto-generate
-	private String Name;
+	private long accountNumber; //doesn't auto-generate, so buildDB must set the account numbers
+	private String name;
 	private BigDecimal cachedTotal = new BigDecimal(0);
 	
 	public Account(long accountNumber, String name) {
 		super();
 		this.accountNumber = accountNumber;
-		Name = name;
+		this.name = name;
 	}
+	
+	public Account(long accountNumber, String name, BigDecimal cachedTotal) {
+		super();
+		this.accountNumber = accountNumber;
+		this.name = name;
+		this.cachedTotal = cachedTotal;
+	}
+	
+	
 	
 	public long getAccountNumber() {
 		return accountNumber;
 	}
-	public void setAccountNumber(long accountNumber) {
-		this.accountNumber = accountNumber;
-	}
+
 	public BigDecimal getCachedTotal() {
 		return cachedTotal;
 	}
@@ -39,10 +46,10 @@ public class Account {
 		this.cachedTotal = cachedTotal;
 	}
 	public String getName() {
-		return Name;
+		return name;
 	}
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 	
 //	public BigDecimal recalculateTotal() {
