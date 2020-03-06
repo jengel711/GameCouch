@@ -20,6 +20,10 @@ public class Account {
 	private String name;
 	private BigDecimal cachedTotal = new BigDecimal(0);
 	
+	public Account() {
+		super();
+	}
+	
 	public Account(long accountNumber, String name) {
 		super();
 		this.accountNumber = accountNumber;

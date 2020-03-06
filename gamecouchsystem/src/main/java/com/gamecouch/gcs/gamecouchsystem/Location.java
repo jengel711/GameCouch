@@ -15,7 +15,7 @@ import javax.persistence.*;
 @ViewScoped
 @Entity
 @Table
-public class Location {
+public class Location implements PersistedData {
  
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,10 +75,12 @@ public class Location {
     	return lookup.getLocationByID(Long.valueOf(id));
     }
     
-    public static List<Location> getLocations() {
+    @SuppressWarnings("unchecked") //is this really a good idea?
+	public static List<Location> getLocations() {
     	if (locations == null) {
     		var lookup = new Lookup();
-    		locations = lookup.getLocations();
+    		var c = Location.class;
+    		locations = (List<Location>) lookup.getTable(c); 
     	}
     		
     	return locations;

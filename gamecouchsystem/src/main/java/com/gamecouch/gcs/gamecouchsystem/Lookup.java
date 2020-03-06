@@ -40,11 +40,11 @@ public class Lookup {
 		return session.get(Location.class, id);
 	}
     
-    public List<Location> getLocations() {
+    public List<? extends PersistedData> getTable(Class<? extends PersistedData> table) {
     	session.beginTransaction();
-    	List<Location> locations = session.createQuery("from Location", Location.class).list();
+    	List<? extends PersistedData> rows = session.createQuery("from " + table.getSimpleName(), table).list();
     	session.getTransaction().commit();
-    	return locations;
+    	return rows;
     }
     
     private static void initSession() {

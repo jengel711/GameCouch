@@ -18,6 +18,10 @@ public class Bill extends Invoice {
 	@ManyToOne
 	private Vendor vendor;
 	//private InventoryCollection inventory
+	
+	public Bill() {
+		super();
+	}
 
 	public Bill(long id, Date dueDate, JournalEntry journalEntry, Vendor vendor) {
 		super(id, dueDate, journalEntry);
