@@ -3,6 +3,7 @@
  */
 package com.gamecouch.gcs.accounting;
 
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -23,7 +24,7 @@ public class Bill extends Invoice {
 		super();
 	}
 
-	public Bill(long id, Date dueDate, JournalEntry journalEntry, Vendor vendor) {
+	public Bill(long id, LocalDate dueDate, JournalEntry journalEntry, Vendor vendor) {
 		super(id, dueDate, journalEntry);
 		this.setVendor(vendor);
 	}

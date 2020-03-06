@@ -9,6 +9,8 @@ import org.hibernate.Session;
 //seems to throw some errors regarding memory leak and connection reset in Tomcat console?
 
 /**
+ * Fetches information from the database.
+ * 
  * @author Alan Bolte
  *
  */
@@ -32,6 +34,10 @@ public class Lookup {
 		return session.get(Customer.class, id);
 	}
 	
+	public Object getRowObjectByID(Class<?> objectClass, long id) {
+		return session.get(objectClass, id);
+	}
+	
 	public Customer getCustomerByEmail(String email) {
 		return session.bySimpleNaturalId(Customer.class).load(email);
 	}
@@ -51,5 +57,4 @@ public class Lookup {
     	session = HibernateUtil.getSessionFactory().openSession();
     }
     
-
 }

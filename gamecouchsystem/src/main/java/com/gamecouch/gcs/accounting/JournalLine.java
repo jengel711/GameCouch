@@ -19,7 +19,7 @@ public class JournalLine {
 	
 	@ManyToOne
 	private JournalEntry journal;
-	private int lineNumber;
+	private int lineNumber; //needs validation
 	
 	@ManyToOne
 	private Account account;

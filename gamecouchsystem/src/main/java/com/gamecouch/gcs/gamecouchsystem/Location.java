@@ -75,7 +75,7 @@ public class Location implements PersistedData {
     	return lookup.getLocationByID(Long.valueOf(id));
     }
     
-    @SuppressWarnings("unchecked") //is this really a good idea?
+    @SuppressWarnings("unchecked") //is this really a good idea? Not sure if getTable is designed well
 	public static List<Location> getLocations() {
     	if (locations == null) {
     		var lookup = new Lookup();

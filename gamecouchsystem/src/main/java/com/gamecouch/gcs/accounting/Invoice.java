@@ -3,6 +3,7 @@
  */
 package com.gamecouch.gcs.accounting;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.*;
@@ -19,12 +20,12 @@ public abstract class Invoice {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private Date dueDate;
+	private LocalDate dueDate;
 	
 	@ManyToOne
 	private JournalEntry journalEntry;
 	
-	public Invoice(long id, Date dueDate, JournalEntry journalEntry) {
+	public Invoice(long id, LocalDate dueDate, JournalEntry journalEntry) {
 		super();
 		this.id = id;
 		this.dueDate = dueDate;
@@ -44,10 +45,10 @@ public abstract class Invoice {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public Date getDueDate() {
+	public LocalDate getDueDate() {
 		return dueDate;
 	}
-	public void setDueDate(Date dueDate) {
+	public void setDueDate(LocalDate dueDate) {
 		this.dueDate = dueDate;
 	}
 	public JournalEntry getJournalEntry() {
@@ -56,4 +57,7 @@ public abstract class Invoice {
 	public void setJournalEntry(JournalEntry journalEntry) {
 		this.journalEntry = journalEntry;
 	}
+	
+	//abstract Date getZonedDueDate();
+	//might want to add this later
 }
