@@ -30,7 +30,7 @@ public class JournalTests {
 		// would it be better to check we can get the row?
 		// delete row after we're done? How to deal with row id?
 	}
-	*/
+	
 	@Test
 	public void createEntryWithLines( ) {
 		try (Session session = HibernateUtil.getSessionFactory().openSession();) {
@@ -70,5 +70,14 @@ public class JournalTests {
 		}
 		
 		assert true;
+	}
+	*/
+	
+	@Test
+	public void getLinesForEntry( ) {
+		
+		
+		
+		assert false;
 	}
 }

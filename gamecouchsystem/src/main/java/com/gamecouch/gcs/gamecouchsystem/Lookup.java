@@ -2,6 +2,7 @@ package com.gamecouch.gcs.gamecouchsystem;
 
 
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -36,6 +37,14 @@ public class Lookup {
 	
 	public Object getRowObjectByID(Class<?> objectClass, long id) {
 		return session.get(objectClass, id);
+	}
+	
+	//TODO: database-agnostic implementation
+	public long getNextID(Class<?> objectClass) { 
+		String sqlString = "SELECT IDENT_CURRENT('" + objectClass.getSimpleName() + "')";
+		List<Object> result = session.createNativeQuery(sqlString).getResultList();
+		BigDecimal currentId = (BigDecimal) result.get(0);
+		return currentId.longValue() + 1;
 	}
 	
 	public Customer getCustomerByEmail(String email) {
