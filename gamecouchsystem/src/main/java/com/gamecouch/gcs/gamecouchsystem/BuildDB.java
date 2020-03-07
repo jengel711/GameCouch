@@ -1,5 +1,6 @@
 package com.gamecouch.gcs.gamecouchsystem;
 import java.math.BigDecimal;
+import java.util.Date;
 
 import org.hibernate.*;
 
@@ -30,13 +31,19 @@ public class BuildDB {
 			session.save(new Customer("John Smith", "jsmith@example.com", "deadbeef", location));
 			
 			//Accounts
-			session.save(new Account(10102, "Cash", new BigDecimal(10000)));
+			var cash = new Account(10102, "Cash", new BigDecimal(10000));
+			session.save(cash);
 			session.save(new Account(10112, "Accounts Receivable"));
-			session.save(new Account(10156, "Inventory", new BigDecimal(500000)));
+			var inventory = new Account(10156, "Inventory", new BigDecimal(500000));
+			session.save(inventory);
 			session.save(new Account(10201, "Accounts Payable"));
 			
-			
-			
+			//Journal
+			var entry = new JournalEntry();
+			entry.setDate(new Date());
+			session.save(entry);
+			session.save(new JournalLine(entry, 1, 0.0, 1.25, cash, ""));
+			session.save(new JournalLine(entry, 2, 1.25, 0.0, inventory, "Candy"));
 			session.getTransaction().commit();
 
 		}

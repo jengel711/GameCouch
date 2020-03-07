@@ -42,7 +42,7 @@ public class JournalBean {
 		if (date != null)
 			return date;
 		entry = (JournalEntry) lookup.getRowObjectByID(JournalEntry.class, id);
-		this.date = entry.getDate();
+		date = entry.getDate();
 		return  date; 
 	}
 	

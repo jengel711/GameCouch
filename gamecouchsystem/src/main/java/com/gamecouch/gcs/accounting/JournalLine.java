@@ -27,6 +27,21 @@ public class JournalLine {
 	private BigDecimal credit;
 	private String description;
 	
+	public JournalLine() {}
+	
+	public JournalLine(JournalEntry journal, int lineNumber, double credit, double debit, Account account, String description) {
+		this.journal = journal;
+		this.lineNumber = lineNumber;
+		this.account = account;
+		this.credit = credit == 0 ? null : BigDecimal.valueOf(credit);
+		this.debit = debit == 0 ? null : BigDecimal.valueOf(debit);
+		this.account = account;
+		this.description = description;
+		
+	}
+	
+	
+	
 	public long getId() {
 		return id;
 	}
