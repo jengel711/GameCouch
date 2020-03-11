@@ -11,6 +11,7 @@ import com.gamecouch.gcs.gamecouchsystem.*;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 /**
  * @author Alan Bolte
@@ -18,7 +19,7 @@ import javax.faces.bean.RequestScoped;
  */
 
 @ManagedBean(name="journal")
-@RequestScoped
+@ViewScoped
 public class JournalBean {
 	private long id;
 	private Date date;
@@ -36,8 +37,10 @@ public class JournalBean {
 		this.id = id;
 	}
 	public Date getDate() {	
-		if (id == lookup.getNextID(JournalEntry.class))
-			return new Date();
+		if (id == lookup.getNextID(JournalEntry.class)) {
+			date = new Date();
+			return date;
+		}
 			
 		if (date != null)
 			return date;
@@ -71,8 +74,15 @@ public class JournalBean {
 			id = lookup.getNextID(JournalEntry.class);
 	}
 	
-	public void create() {
+	public String create() {
+		if (entry == null) {
+			entry = new JournalEntry();
+			entry.setId(id);
+			entry.setDate(date);			
+		}
+		
 		entry.create();
+		return "NewJournalEntry";
 	}
 	
 }
