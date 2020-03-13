@@ -6,6 +6,8 @@ package com.gamecouch.gcs.accounting;
 import java.math.BigDecimal;
 import javax.persistence.*;
 
+import com.gamecouch.gcs.gamecouchsystem.Lookup;
+
 /**
  * @author Alan Bolte
  *
@@ -66,6 +68,12 @@ public class JournalLine {
 	public void setAccount(Account account) { 
 		this.account = account;
 	}
+
+	public void setAccount(long accountNumber) { 
+		var lookup = new Lookup();
+		this.account = (Account) lookup.getRowObjectByID(Account.class, accountNumber);		
+	}
+	
 	public BigDecimal getDebit() {
 		return debit;
 	}

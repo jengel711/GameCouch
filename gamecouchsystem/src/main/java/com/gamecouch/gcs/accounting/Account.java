@@ -4,8 +4,13 @@
 package com.gamecouch.gcs.accounting;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.*;
+
+import com.gamecouch.gcs.gamecouchsystem.Location;
+import com.gamecouch.gcs.gamecouchsystem.Lookup;
+import com.gamecouch.gcs.gamecouchsystem.PersistedData;
 
 
 /**
@@ -13,12 +18,13 @@ import javax.persistence.*;
  *
  */
 @Entity
-public class Account {
+public class Account implements PersistedData {
 	
 	@Id
 	private long accountNumber; //doesn't auto-generate, so buildDB must set the account numbers
 	private String name;
 	private BigDecimal cachedTotal = new BigDecimal(0);
+	private static List<Account> accounts;
 	
 	public Account() {
 		super();
@@ -55,6 +61,17 @@ public class Account {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+    @SuppressWarnings("unchecked") //is this really a good idea? Not sure if getTable is designed well
+	public static List<Account> getAccounts() {
+    	if (accounts == null) {
+    		var lookup = new Lookup();
+    		var c = Account.class;
+    		accounts = (List<Account>) lookup.getTable(c); 
+    	}
+    		
+    	return accounts;
+    }
 	
 //	public BigDecimal recalculateTotal() {
 //		

@@ -5,13 +5,13 @@ package com.gamecouch.gcs.accounting;
 
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import com.gamecouch.gcs.gamecouchsystem.*;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
 
 /**
  * @author Alan Bolte
@@ -19,7 +19,7 @@ import javax.faces.bean.ViewScoped;
  */
 
 @ManagedBean(name="journal")
-@ViewScoped
+@RequestScoped
 public class JournalBean {
 	private long id;
 	private Date date;
@@ -30,29 +30,43 @@ public class JournalBean {
 	private JournalEntry entry;
 	
 	public long getId() {
+		System.out.println("journalbean getId: " + id);
 		return id;
 	}
 	
 	public void setId(long id) {
+		System.out.println("journalbean setId, original: " + this.id + " new: " + id );
 		this.id = id;
 	}
 	public Date getDate() {	
-		if (id == lookup.getNextID(JournalEntry.class)) {
+		System.out.println("journalbean getDate");
+		if (id == 0 || id == lookup.getNextID(JournalEntry.class)) {
+			System.out.println("new date for id:" + id);			
 			date = new Date();
 			return date;
 		}
 			
 		if (date != null)
 			return date;
+					
+		
+		System.out.println("before lookup: " + (entry == null ? "no entry" : entry.toString()));
 		entry = (JournalEntry) lookup.getRowObjectByID(JournalEntry.class, id);
+		System.out.println("after lookup: " + (entry == null ? "no entry" : entry.toString()));
 		date = entry.getDate();
 		return  date; 
 	}
 	
-	public void setDate(Date date) {//TODO
+	public void setDate(Date date) {
+		System.out.println("journalbean setDate");
 		this.date = date;
 	}
 	public List<JournalLine> getLines() {
+		if (id == 0 || id == lookup.getNextID(JournalEntry.class)) {
+			lines = new ArrayList<JournalLine>(List.of(new JournalLine(), new JournalLine()));
+			return lines;
+		}
+		
 		if (lines != null)
 			return lines;
 		entry = (JournalEntry) lookup.getRowObjectByID(JournalEntry.class, id); //TODO: remove duplication
@@ -63,10 +77,15 @@ public class JournalBean {
 	}
 	
 	public String shortDate() { //TODO: unnecessary duplication?
+		
 		String pattern = "MM/dd/yyyy";
 		SimpleDateFormat formatter = new SimpleDateFormat(pattern);
 		
 		return formatter.format(getDate());
+	}
+	
+	public List<Account> getAccounts() {
+		return Account.getAccounts();
 	}
 	
 	public void getNextId() {
@@ -74,11 +93,12 @@ public class JournalBean {
 			id = lookup.getNextID(JournalEntry.class);
 	}
 	
-	public String create() {
+	public String create(JournalBean bean) {
+		System.out.println("journalbean create");
 		if (entry == null) {
 			entry = new JournalEntry();
-			entry.setId(id);
-			entry.setDate(date);			
+			entry.setId(bean.getId());
+			entry.setDate(bean.getDate());			
 		}
 		
 		entry.create();
