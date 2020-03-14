@@ -56,6 +56,12 @@
 				<f:facet name="header">Description</f:facet>
 				<h:inputText value="#{l.description}"></h:inputText>
 			</h:column>
+			<h:column>
+				<f:facet name="header"></f:facet>
+				<h:commandButton id="delete" value="Delete Row" action="#{lineCollection.delete(l)}"></h:commandButton>
+				
+			</h:column>
+			
 			<f:facet name="footer">
 				<h:panelGroup>
 					<h:commandButton value="Add Row" action="#{lineCollection.addLine()}" />

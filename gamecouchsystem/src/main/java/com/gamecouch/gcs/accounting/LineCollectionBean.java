@@ -44,6 +44,17 @@ public class LineCollectionBean {
 		lines.add(newLine);
 		return "NewJournalEntry";
 	}
+	
+	public String delete(JournalLine l) {
+		lines.remove(l);
+		--lineQuantity;
+		
+		int count = 0;
+		for (JournalLine line : lines) {
+			line.setLineNumber(++count);
+		}
+		return "NewJournalEntry";
+	}
 
 
 	
