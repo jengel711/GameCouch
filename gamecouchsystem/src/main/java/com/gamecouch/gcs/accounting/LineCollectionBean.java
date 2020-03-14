@@ -5,6 +5,7 @@ package com.gamecouch.gcs.accounting;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -21,6 +22,13 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class LineCollectionBean {
 	private List<JournalLine> lines;
+	private int lineQuantity;
+	
+	public LineCollectionBean( ) {
+		lines = new ArrayList<JournalLine>(List.of(new JournalLine(1), new JournalLine(2)));
+		lineQuantity = 2;
+		
+	}
 
 	public List<JournalLine> getLines() {
 		return lines;
@@ -31,7 +39,11 @@ public class LineCollectionBean {
 	} 
 	
 
-
+	public String addLine() {
+		final JournalLine newLine = new JournalLine(++lineQuantity);
+		lines.add(newLine);
+		return "NewJournalEntry";
+	}
 
 
 	

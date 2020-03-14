@@ -58,9 +58,9 @@
 			</h:column>
 			<f:facet name="footer">
 				<h:panelGroup>
-					<h:commandButton value="Add Row" action="#{journal.doAddLine(journal)}" />
+					<h:commandButton value="Add Row" action="#{lineCollection.addLine()}" />
 					<h:commandButton id="submit" value="Save Journal Entry"
-			action="#{journal.create(journal)}" />
+			action="#{journal.create(journal, lineCollection)}" />
 				</h:panelGroup>
 			</f:facet>
 		</h:dataTable>

@@ -23,8 +23,8 @@ import javax.faces.bean.RequestScoped;
 public class JournalBean {
 	private long id;
 	private Date date;
-	private List<JournalLine> lines;
-	private int lineQuantity;
+	//private List<JournalLine> lines;
+	//private int lineQuantity;
 	
 	
 	private Lookup lookup = new Lookup();
@@ -62,7 +62,8 @@ public class JournalBean {
 		System.out.println("journalbean setDate");
 		this.date = date;
 	}
-	public List<JournalLine> getLines() {
+	
+	/*public List<JournalLine> getLines() {
 		System.out.println("journalbean getLines");
 		if (id == 0 || id == lookup.getNextID(JournalEntry.class)) { 
 			System.out.println("new lines for id:" + id);
@@ -80,10 +81,11 @@ public class JournalBean {
 		entry = (JournalEntry) lookup.getRowObjectByID(JournalEntry.class, id); //TODO: remove duplication
 		return entry.getLines();
 	}
+	
 	public void setLines(List<JournalLine> lines) {//TODO
 		System.out.println("journalbean getLines");
 		this.lines = lines;
-	}
+	}*/
 	
 	public String shortDate() { //TODO: unnecessary duplication?
 		
@@ -102,16 +104,17 @@ public class JournalBean {
 			id = lookup.getNextID(JournalEntry.class);
 	}
 	
-	public String create(JournalBean bean) {
+	public String create(JournalBean journal, LineCollectionBean lineBean) {
 		System.out.println("journalbean create");
 		if (entry == null) {
 			entry = new JournalEntry();
-			entry.setId(bean.getId());
-			entry.setDate(bean.getDate());			
+			entry.setId(journal.getId());
+			entry.setDate(journal.getDate());			
 		}
 		
 		entry.create();
-		for (JournalLine line : lines) {	
+		
+		for (JournalLine line : lineBean.getLines()) {	
 			line.setJournal(entry);
 			lookup.create(line);
 		}
@@ -119,10 +122,6 @@ public class JournalBean {
 		return "NewJournalEntry";
 	}
 	
-	public String doAddLine(JournalBean bean) {
-		final JournalLine newLine = new JournalLine(++bean.lineQuantity);
-		bean.lines.add(newLine);
-		return "NewJournalEntry";
-	}
+
 	
 }
