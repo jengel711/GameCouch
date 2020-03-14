@@ -66,4 +66,10 @@ public class Lookup {
     	session = HibernateUtil.getSessionFactory().openSession();
     }
     
+    public void create(PersistedData entity) {//would this be better in a different class?
+		session.beginTransaction();
+		session.save(entity);
+		session.getTransaction().commit();
+    }
+    
 }

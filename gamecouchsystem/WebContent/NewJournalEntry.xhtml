@@ -21,54 +21,56 @@
 		<label>Journal Date </label>
 
 		<input type="date" jsf:id="date" jsf:value="#{journal.date}"
-			required="required">
-		<f:convertDateTime pattern="yyyy-MM-dd" />
-		</input>
-		<br />
-		<br />
-			<h:dataTable value="#{journal.lines}" var="l" styleClass="table"
-		headerClass="table-header"
-		rowClasses="table-odd-row,table-even-row">
-
-		<h:column>
-			<f:facet name="header">#</f:facet>				
-    				<h:inputText value="#{l.lineNumber}"></h:inputText>
-    			</h:column>
-
-		<h:column>
-			<f:facet name="header">Account</f:facet>
-    				<h:selectOneMenu value = "#{l.account}"> 
-   <f:selectItems value = "#{journal.getAccounts()}" var="account" itemValue="#{account.accountNumber}" itemLabel="#{account.name}"/> 
-</h:selectOneMenu>
-    			</h:column>
-
-		<h:column>
-			<f:facet name="header">Credit</f:facet>
-			<h:inputText value="#{l.credit}"></h:inputText>
-    				
-    			</h:column>
-
-		<h:column>
-			<f:facet name="header">Debit</f:facet>
-    				<h:inputText value="#{l.debit}"></h:inputText>
-    			</h:column>
-
-		<h:column>
-			<f:facet name="header">Description</f:facet>
-    				<h:inputText value="#{l.description}"></h:inputText>
-    			</h:column>
-
-	</h:dataTable>
+			required="required"> <f:convertDateTime pattern="yyyy-MM-dd" /></input>
 
 		<br />
 		<br />
+		<h:dataTable value="#{lineCollection.lines}" var="l" styleClass="table"
+			headerClass="table-header" rowClasses="table-odd-row,table-even-row">
 
+			<h:column>
+				<f:facet name="header">#</f:facet>
+				<h:outputText value="#{l.lineNumber}"></h:outputText>
+			</h:column>
 
+			<h:column>
+				<f:facet name="header">Account</f:facet>
+				<h:selectOneMenu id="Account" value="#{l.account}">
+					<f:selectItems value="#{journal.getAccounts()}" var="account"
+						itemValue="#{account}" itemLabel="#{account.name}" />
+				</h:selectOneMenu>
+			</h:column>
 
+			<h:column>
+				<f:facet name="header">Credit</f:facet>
+				<h:inputText value="#{l.credit}"></h:inputText>
 
+			</h:column>
 
-		<h:commandButton id="submit" value="Submit"
+			<h:column>
+				<f:facet name="header">Debit</f:facet>
+				<h:inputText value="#{l.debit}"></h:inputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Description</f:facet>
+				<h:inputText value="#{l.description}"></h:inputText>
+			</h:column>
+			<f:facet name="footer">
+				<h:panelGroup>
+					<h:commandButton value="Add Row" action="#{journal.doAddLine(journal)}" />
+					<h:commandButton id="submit" value="Save Journal Entry"
 			action="#{journal.create(journal)}" />
+				</h:panelGroup>
+			</f:facet>
+		</h:dataTable>
+
+		<br />
+		<br />
+
+
+
+
 	</h:form>
 </h:body>
 </html>

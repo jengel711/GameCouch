@@ -24,6 +24,7 @@ public class JournalBean {
 	private long id;
 	private Date date;
 	private List<JournalLine> lines;
+	private int lineQuantity;
 	
 	
 	private Lookup lookup = new Lookup();
@@ -62,17 +63,25 @@ public class JournalBean {
 		this.date = date;
 	}
 	public List<JournalLine> getLines() {
-		if (id == 0 || id == lookup.getNextID(JournalEntry.class)) {
-			lines = new ArrayList<JournalLine>(List.of(new JournalLine(), new JournalLine()));
+		System.out.println("journalbean getLines");
+		if (id == 0 || id == lookup.getNextID(JournalEntry.class)) { 
+			System.out.println("new lines for id:" + id);
+			if (lines == null) {
+				lines = new ArrayList<JournalLine>(List.of(new JournalLine(1), new JournalLine(2)));
+				lineQuantity = 2;
+			}
 			return lines;
 		}
 		
 		if (lines != null)
 			return lines;
+		
+		System.out.println("lines lookup for id:" + id);
 		entry = (JournalEntry) lookup.getRowObjectByID(JournalEntry.class, id); //TODO: remove duplication
 		return entry.getLines();
 	}
 	public void setLines(List<JournalLine> lines) {//TODO
+		System.out.println("journalbean getLines");
 		this.lines = lines;
 	}
 	
@@ -102,6 +111,17 @@ public class JournalBean {
 		}
 		
 		entry.create();
+		for (JournalLine line : lines) {	
+			line.setJournal(entry);
+			lookup.create(line);
+		}
+		
+		return "NewJournalEntry";
+	}
+	
+	public String doAddLine(JournalBean bean) {
+		final JournalLine newLine = new JournalLine(++bean.lineQuantity);
+		bean.lines.add(newLine);
 		return "NewJournalEntry";
 	}
 	

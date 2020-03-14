@@ -72,6 +72,11 @@ public class Account implements PersistedData {
     		
     	return accounts;
     }
+    
+    @Override
+    public String toString( ) {
+    	return String.valueOf(accountNumber);
+    }
 	
 //	public BigDecimal recalculateTotal() {
 //		

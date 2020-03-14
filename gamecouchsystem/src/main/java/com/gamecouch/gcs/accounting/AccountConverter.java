@@ -35,7 +35,7 @@ public class AccountConverter implements Converter {
         if (submittedValue == null || submittedValue.isEmpty()) {
             return null;
         }
-
+        System.out.println("Convert accountNumber to object for: " + submittedValue);
         try {
         	var lookup = new Lookup();
         	return lookup.getRowObjectByID(Account.class, Long.valueOf(submittedValue));

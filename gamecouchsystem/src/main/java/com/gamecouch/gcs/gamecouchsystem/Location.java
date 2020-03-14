@@ -19,7 +19,7 @@ public class Location implements PersistedData {
  
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     
     private String name;
     
@@ -43,7 +43,7 @@ public class Location implements PersistedData {
     private List<Customer> customers = new ArrayList<Customer>();
       
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
     public void setId(Long id) {
@@ -92,7 +92,7 @@ public class Location implements PersistedData {
     
     @Override
     public String toString() {
-        return (id.toString());
+        return String.valueOf(id);
     }
 
 }

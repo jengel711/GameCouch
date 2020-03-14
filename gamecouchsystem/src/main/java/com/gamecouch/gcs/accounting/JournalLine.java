@@ -14,7 +14,7 @@ import com.gamecouch.gcs.gamecouchsystem.Lookup;
  */
 
 @Entity
-public class JournalLine {
+public class JournalLine implements com.gamecouch.gcs.gamecouchsystem.PersistedData {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -31,6 +31,15 @@ public class JournalLine {
 	
 	public JournalLine() {}
 	
+	public JournalLine(int lineNumber) {
+		this.lineNumber = lineNumber;
+	}
+	
+	public JournalLine(int lineNumber, JournalEntry entry) {
+		this.lineNumber = lineNumber;
+		this.journal = entry;
+	}
+	
 	public JournalLine(JournalEntry journal, int lineNumber, double credit, double debit, Account account, String description) {
 		this.journal = journal;
 		this.lineNumber = lineNumber;
@@ -42,6 +51,16 @@ public class JournalLine {
 		
 	}
 	
+	public JournalLine(JournalEntry journal, int lineNumber, BigDecimal credit, BigDecimal debit, Account account, String description) {
+		this.journal = journal;
+		this.lineNumber = lineNumber;
+		this.account = account;
+		this.credit = credit;
+		this.debit = debit;
+		this.account = account;
+		this.description = description;
+		
+	}
 	
 	
 	public long getId() {
@@ -92,5 +111,6 @@ public class JournalLine {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 
 }

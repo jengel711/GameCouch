@@ -66,7 +66,7 @@ public class JournalEntry implements com.gamecouch.gcs.gamecouchsystem.Persisted
 		return (List<JournalEntry>) lookup.getTable(c);
 	}
 
-	public String create() { // need to access this from a controller with validation (what?) and a success
+	public void create() { // need to access this from a controller with validation (what?) and a success
 		
 		try (Session session = HibernateUtil.getSessionFactory().openSession();) {
 			session.beginTransaction();
@@ -75,6 +75,5 @@ public class JournalEntry implements com.gamecouch.gcs.gamecouchsystem.Persisted
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "ViewJournalEntry";
 	}
 }
