@@ -25,15 +25,10 @@
     			</h:column>
 
 		<h:column>
-			<h:form id="journalEntry">
-				
-				<h:commandLink value="View Entry" Action="ViewJournalEntryResult">
-				</h:commandLink>
-			</h:form>
+			<h:link value="View Entry" outcome="GenJournalEntry?q=#{l.id}"></h:link>
 		</h:column>
 
-
-
 	</h:dataTable>
+
 </h:body>
 </html>
