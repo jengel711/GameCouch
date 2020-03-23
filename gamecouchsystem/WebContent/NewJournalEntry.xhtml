@@ -6,12 +6,17 @@
 <h:head>
 	<title>New Journal Entry</title>
 	<h:outputStylesheet library="css" name="journal.css" />
+	<h:outputScript library="js" name="jquery-3.4.1.js"/>
 </h:head>
+<f:metadata>
+	<f:event listener="#{journal.getNextId()}" type="preRenderView" />
+</f:metadata>
 <h:body id="main">
+
 	<h1>New Journal Entry</h1>
 	<h:form id="NewJournal">
-		<h:messages />
-		#{journal.getNextId()}
+		
+		
 		<label>Journal Number </label>
 		<h:inputText id="entry" value="#{journal.id}" required="true">
 		</h:inputText>
@@ -25,7 +30,7 @@
 
 		<br />
 		<br />
-		<h:dataTable value="#{lineCollection.lines}" var="l" styleClass="table"
+		<h:dataTable id="linesTable" value="#{lineCollection.lines}" var="l" styleClass="table"
 			headerClass="table-header" rowClasses="table-odd-row,table-even-row">
 
 			<h:column>
@@ -67,10 +72,11 @@
 					<h:commandButton value="Add Row" action="#{lineCollection.addLine()}" />
 					<h:commandButton id="submit" value="Save Journal Entry"
 			action="#{journal.create(journal, lineCollection)}" />
+					<a id="clear" href="#">Clear</a>
 				</h:panelGroup>
 			</f:facet>
 		</h:dataTable>
-
+		
 		<br />
 		<br />
 
@@ -78,5 +84,15 @@
 
 
 	</h:form>
+	<h:message for = "NewJournal" />
+	<script>
+	$(document).ready(function() {
+		$("#clear").on('click', function(){$("#NewJournal\\:linesTable :text").val('');});
+		
+	});
+	
+	</script>
+	
+
 </h:body>
 </html>

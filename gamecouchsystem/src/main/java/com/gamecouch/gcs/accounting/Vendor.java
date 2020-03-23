@@ -10,8 +10,10 @@ package com.gamecouch.gcs.accounting;
 
 import javax.persistence.*;
 
+import com.gamecouch.gcs.gamecouchsystem.*;
+
 @Entity
-public class Vendor {
+public class Vendor implements PersistedData {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,13 +22,10 @@ public class Vendor {
 	private String address; //could be decomposed.
 	
 	public Vendor() {
-		super();
 	}
 	
 	
-	public Vendor(long id, String name, String address) {
-		super();
-		this.id = id;
+	public Vendor(String name, String address) {
 		this.name = name;
 		this.address = address;
 	}
@@ -53,4 +52,9 @@ public class Vendor {
 		this.address = address;
 	}
 
+	//TODO: there has to be a better way to do this
+    @Override
+    public String toString( ) {
+    	return String.valueOf(id);
+    }
 }

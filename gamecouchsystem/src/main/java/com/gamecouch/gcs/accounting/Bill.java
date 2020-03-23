@@ -24,8 +24,8 @@ public class Bill extends Invoice {
 		super();
 	}
 
-	public Bill(long id, LocalDate dueDate, JournalEntry journalEntry, Vendor vendor) {
-		super(id, dueDate, journalEntry);
+	public Bill(LocalDate dueDate, JournalEntry journalEntry, Vendor vendor) {
+		super(dueDate, journalEntry);
 		this.setVendor(vendor);
 	}
 

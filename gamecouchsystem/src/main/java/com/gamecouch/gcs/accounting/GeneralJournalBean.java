@@ -4,13 +4,10 @@
 package com.gamecouch.gcs.accounting;
 
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import com.gamecouch.gcs.gamecouchsystem.*;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
 /**

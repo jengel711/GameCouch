@@ -8,6 +8,8 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import com.gamecouch.gcs.gamecouchsystem.PersistedData;
+
 /**
  * @author Alan Bolte
  *
@@ -15,7 +17,7 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance
-public abstract class Invoice {
+public abstract class Invoice implements PersistedData {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,9 +27,8 @@ public abstract class Invoice {
 	@ManyToOne
 	private JournalEntry journalEntry;
 	
-	public Invoice(long id, LocalDate dueDate, JournalEntry journalEntry) {
+	public Invoice(LocalDate dueDate, JournalEntry journalEntry) {
 		super();
-		this.id = id;
 		this.dueDate = dueDate;
 		this.journalEntry = journalEntry;
 	}
@@ -57,6 +58,8 @@ public abstract class Invoice {
 	public void setJournalEntry(JournalEntry journalEntry) {
 		this.journalEntry = journalEntry;
 	}
+	
+	
 	
 	//abstract Date getZonedDueDate();
 	//might want to add this later

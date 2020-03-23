@@ -33,22 +33,22 @@
 
 			<h:column>
 				<f:facet name="header">Account</f:facet>
-    				#{l.account.name}
+    				<h:outputText value="#{l.account.name}" style="float:left"/>
     			</h:column>
 
-			<h:column>
+			<h:column >
 				<f:facet name="header">Credit</f:facet>
-    				#{l.credit}
+    				<h:outputText value="#{l.credit}" style="float:right"/>
     			</h:column>
 
-			<h:column>
+			<h:column >
 				<f:facet name="header">Debit</f:facet>
-    				#{l.debit}
+    				<h:outputText value="#{l.debit}" style="float:right"/>
     			</h:column>
 
 			<h:column>
 				<f:facet name="header">Description</f:facet>
-    				#{l.description}
+    				<h:outputText value="#{l.description}" style="float:left"/>
     			</h:column>
 
 		</h:dataTable>
