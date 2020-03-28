@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GameCouch</title>
+<style>
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="title">
+    <img src="img/couchLogo.png" alt="CouchLogo" class="logo">
+    <img src="img/userIcon.png" alt="UserIcon" style="height:75px; width:75px; float:right; border:3px solid; margin-top:50px; margin-right:60px">
+    <p style="float: right; margin-right: 65px; color: white; clear: right">Hello, User</p>
+    <div style="width:50%; margin: 0 auto;">
+      <h1 style="font-size: 50px">GameCouch</h1>
+    </div>
+  </div>
+
+ <div class="header" id="myHeader">
+   <div class="topnav">
+      <a href="index.html">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="contacts.html">Contact Us</a>
+      <a href="reservations.html">Make A Reservation</a>
+      <a href="login&signup.html">Log In/Sign Up</a>
+   </div>
+   <div style="background-color:#C38D9E; text-align:center; padding:5px;">
+   </div>
+ </div>
+
+ <script>
+   window.onscroll = function() {myFunction()};
+   var header = document.getElementById("myHeader");
+   var sticky = header.offsetTop;
+   function myFunction() {
+     if (window.pageYOffset > sticky) {
+       header.classList.add("sticky");
+     } else {
+       header.classList.remove("sticky");
+     }
+   }
+ </script>
+
+ <div class="content">
+   <h2>Reserve a Game for Pick Up</h2>
+   <h3 style="text-align:center">You can reserve up to 3 games on one order.</h3>
+  <form name="tableFrm" action="gameCheckout.html">
+   <table>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Number of Players</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+        <td><input type="checkbox" id="game0" name="0" value="42.47"><img src="img/7Wonders.jpg" alt="7 Wonders" style="height:100px; width:100px;"></td>
+        <td>7 Wonders</td>
+        <td>3-7</td>
+        <td>$42.47</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" id="game1" name="1" value="29.99"><img src="img/axisAndAllies.jpg" alt="Axis and Allies" style="height:100px; width:100px;"></td>
+        <td>Axis and Allies</td>
+        <td>2-5</td>
+        <td>$29.99</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" id="game2" name="2" value="39.99"><img src="img/dominion.jpg" alt="Dominion" style="height:100px; width:100px;"></td>
+        <td>Dominion</td>
+        <td>2-4</td>
+        <td>$39.99</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" id="game3" name="3" value="37.99"><img src="img/DAndD.jpg" alt="D&D" style="height:100px; width:100px;"></td>
+        <td>Dungeons and Dragons Starter Set 5th Edition</td>
+        <td>2-6</td>
+        <td>$37.99</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" id="game4" name="4" value="39.98"><img src="img/risk.jpg" alt="Risk" style="height:100px; width:100px;"></td>
+        <td>Risk</td>
+        <td>2-6</td>
+        <td>$39.98</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" id="game5" name="5" value="69.95"><img src="img/catan.jpg" alt="Catan" style="height:100px; width:100px;"></td>
+        <td>Settlers of Catan</td>
+        <td>3-4</td>
+        <td>$69.95</td>
+      </tr>
+   </table>
+   <br><br>
+   <button style="margin-left:100px; font-size:15px; float:left" type="button" onclick="checkedFunction();">Proceed to Checkout</button>
+   <button style="margin-right:100px; font-size:15px; float:right" type="button" onclick="location.reload();">Clear</button>
+   <br><br>
+  </form>
+
+  <script>
+      function checkedFunction(){
+        var checkedCount = 0;
+        var i;
+        for (i = 0; i < 6; i++) {
+          var checkBox = document.getElementById("game" + i);
+          if (checkBox.checked == true){
+            checkedCount++;
+          }
+        }
+        if(checkedCount == 0){
+          alert("You must select at least one game.");
+        }else if(checkedCount > 3){
+          alert("You can only select a max of 3 games for purchase in one order.");
+        }else{
+          document.tableFrm.submit();
+        }
+      }
+  </script>
+
+ </div>
+
+ <div style="background-color:#C38D9E; text-align:center; padding:5px;">
+ </div>
+  <footer>
+    <div class="row">
+      <div class="column">
+        <h2>Connect With Us:</h2>
+        <a href="https://www.facebook.com">
+        <img border="0" alt="FacebookLink" src="img/facebookLink.png" width="75" height="75"></a>
+        <a href="https://www.twitter.com">
+        <img border="0" alt="TwitterLink" src="img/twitterLink.png" width="75" height="75"></a>
+        <p>Phone: 1-614-972-2440<br>
+           Email: GameCouch@gmail.com<br>
+           Address: 7272 Made Up Blvd, NY, 12345</p>
+        <p>GameCouch | Copyright &copy;1990</p>
+      </div>
+      <div class="column">
+        <h2>Navigate:</h2>
+        <a class="active" href="index.html">Home</a><br>
+        <a href="aboutus.html">About Us</a><br>
+        <a href="contacts.html">Contact Us</a><br>
+        <a href="reservations.html">Make A Reservation</a><br>
+        <a href="login&signup.html">Login/Signup</a>
+      </div>
+      <div class="column">
+        <h2>Marketing Links:</h2>
+           <a href="">Ongoing Promotions</a><br>
+           <a href="">Theme Nights</a><br>
+           <a href="">League Nights</a><br>
+           <a href="">DM Training</a><br>
+           <a href=""></a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
