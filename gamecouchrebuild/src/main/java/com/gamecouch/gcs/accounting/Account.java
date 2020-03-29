@@ -98,6 +98,7 @@ public class Account implements PersistedData {
 			if (line.getAccount() != this) //TODO: replace with SQL Where query or simliar hibernate feature 
 				continue;
 			
+			cachedTotal = BigDecimal.ZERO;
 			//assumption: every line will be credit or debit. TODO: validation		
 			if (line.getCredit() == null) { //if debit
 				if (isAsset())

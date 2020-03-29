@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+	<title>Balance Sheet</title>
+	<h:outputStylesheet library="css" name="journal.css" />
+</h:head>
+<h:body id="main">
+	<h1>GameCouch</h1>
+	<h2>
+		Balance Sheet<br />#{report.today}
+	</h2>
+	<!-- TODO: select date range -->
+
+	<br />
+	<br />
+	<h2>Assets</h2>
+	<h3>Current assets</h3>
+
+	<h:dataTable value="#{report.assets}" var="a" styleClass="table"
+		rowClasses="table-odd-row,table-even-row">
+
+		<h:column>		
+    			<h:outputText value="#{a.name}" style="float:left" />
+    			</h:column>
+
+		<h:column>
+			<h:outputText value="#{a.cachedTotal}" style="float:right" />
+    				
+    			</h:column>
+
+	</h:dataTable>
+	<h3>Property, plant &amp; equipment</h3>
+	<br />
+	<h:dataTable value="#{report.property}" var="a" styleClass="table"
+		rowClasses="table-odd-row,table-even-row">
+
+		<h:column>		
+    			<h:outputText value="#{a.name}" style="float:left" />
+    			</h:column>
+
+		<h:column>
+			<h:outputText value="#{a.cachedTotal}" style="float:right" />
+    				
+    			</h:column>
+
+	</h:dataTable>
+	<h3>Intangible assets</h3>
+	<br />
+	<h:dataTable value="#{report.intangible}" var="a" styleClass="table"
+		rowClasses="table-odd-row,table-even-row">
+
+		<h:column>		
+    			<h:outputText value="#{a.name}" style="float:left" />
+    			</h:column>
+
+		<h:column>
+			<h:outputText value="#{a.cachedTotal}" style="float:right" />
+    				
+    			</h:column>
+
+	</h:dataTable>
+	<h3>Total assets</h3>
+	
+#{report.totalAssets}
+	<h2>Liabilities</h2>
+
+	<h3>Current liabilities</h3>
+		<h:dataTable value="#{report.liabilities}" var="a" styleClass="table"
+		rowClasses="table-odd-row,table-even-row">
+
+		<h:column>		
+    			<h:outputText value="#{a.name}" style="float:left" />
+    			</h:column>
+
+		<h:column>
+			<h:outputText value="#{a.cachedTotal}" style="float:right" />
+    				
+    			</h:column>
+
+	</h:dataTable>
+
+	<h3>Total liabilities</h3>
+	#{report.totalLiabilities}
+
+
+	<h2>Equity</h2>
+	#{report.equity}
+
+	<h3>Total liabilities &amp; equity</h3>
+	#{report.totalLiabilities + report.equity}
+
+</h:body>
+</html>
