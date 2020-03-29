@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GameCouch</title>
+<style>
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+ <div class="title">
+   <img src="img/couchLogo.png" alt="CouchLogo" class="logo">
+   <img src="img/userIcon.png" alt="UserIcon" style="height:75px; width:75px; float:right; border:3px solid; margin-top:50px; margin-right:60px">
+   <p style="float: right; margin-right: 65px; color: white; clear: right">Hello, User</p>
+   <div style="width:50%; margin: 0 auto;">
+     <h1 style="font-size: 50px">GameCouch</h1>
+   </div>
+ </div>
+
+ <div class="header" id="myHeader">
+   <div class="topnav">
+      <a class="active" href="index.html">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="contacts.html">Contact Us</a>
+      <a href="reservations.html">Make A Reservation</a>
+      <a href="login&signup.html">Log In/Sign Up</a>
+   </div>
+   <div style="background-color:#C38D9E; text-align:center; padding:5px;">
+   </div>
+ </div>
+
+ <script>
+   window.onscroll = function() {myFunction()};
+   var header = document.getElementById("myHeader");
+   var sticky = header.offsetTop;
+   function myFunction() {
+     if (window.pageYOffset > sticky) {
+       header.classList.add("sticky");
+     } else {
+       header.classList.remove("sticky");
+     }
+   }
+
+   // function geturlvar() {
+   //   var vars = {};
+   //   var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+   //     vars[key] = value;
+   //   });
+   //   return vars;
+   // }
+   //
+   // var resDate = geturlvar()["reservationDate"];
+   // var resTime = geturlvar()["reservationTime"];
+   // var resTable = geturlvar()["table"];
+ </script>
+
+ <div class="content">
+   <h2>Checkout</h2>
+   <hr>
+   <div class="row2">
+     <div class="column3">
+       <br><br><br><br><br>
+       <h2 style="text-align: center;">Purchase Summary</h2>
+       <div style="text-align:center">
+         <p id="items"></p>
+         <p id="totalPrice"></p>
+         <p>Need to change something? <a href="gameReservation.html">Go Back<a></p>
+       </div>
+     </div>
+     <div class="column3">
+       <div class="container">
+         <form action="/action_page.php">
+             <div class="login">
+               <h3>Payment</h3>
+               <label for="cname">Name on Card</label>
+               <input type="text" id="cname" name="cardname" placeholder="John More Doe"><br>
+               <label for="ccnum">Credit card number</label>
+               <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444"><br>
+               <label for="expmonth">Exp Month</label>
+               <input type="text" id="expmonth" name="expmonth" placeholder="September">
+
+               <div>
+                 <div>
+                   <label for="expyear">Exp Year</label>
+                   <input type="text" id="expyear" name="expyear" placeholder="2018">
+                 </div>
+                 <div>
+                   <label for="cvv">CVV</label>
+                   <input type="text" id="cvv" name="cvv" placeholder="352"><br><br>
+                   <button type="button" onclick="confirmReservation();">Place Your Reservation</button>
+
+                 </div>
+               </div>
+             </div>
+           </div>
+         </form>
+       </div>
+     </div>
+     </div>
+   </div>
+ </div>
+
+</div>
+
+<script>
+  function confirmReservation(){
+    alert("Your reservation has been placed.\nWe will have " + numGames + " games ready for you when you come in.\nReturning to the reservation page.\nThank you!");
+    window.location = "reservations.html";
+  }
+</script>
+
+<script>
+  var result = {};
+  window.location.search
+  .replace(/[?&amp;]+([^=&amp;]+)=([^&amp;]*)/gi, function(str, key, value) {
+    result[key] = value;
+  }
+  );
+  console.log(result);
+  var totalCost = 0;
+  var numGames = 0;
+  var i;
+  for(i = 0; i < 6; i++){
+    if(result[i] != null){
+      var x = parseFloat(result[i]);
+      totalCost = totalCost + x;
+      numGames++;
+    }
+  }
+  document.getElementById("totalPrice").innerHTML = "<b><u>Price:</u></b> $" + totalCost.toFixed(2);
+  document.getElementById("items").innerHTML = "<b><u>Games in Cart:</u></b> " + numGames;
+
+</script>
+
+<div style="background-color:#C38D9E; text-align:center; padding:5px;">
+</div>
+  <footer>
+    <div class="row">
+      <div class="column">
+        <h2>Connect With Us:</h2>
+        <a href="https://www.facebook.com">
+        <img border="0" alt="FacebookLink" src="img/facebookLink.png" width="75" height="75"></a>
+        <a href="https://www.twitter.com">
+        <img border="0" alt="TwitterLink" src="img/twitterLink.png" width="75" height="75"></a>
+        <p>Phone: 1-614-972-2440<br>
+           Email: GameCouch@gmail.com<br>
+           Address: 7272 Made Up Blvd, NY, 12345</p>
+        <p>GameCouch | Copyright &copy;1990</p>
+      </div>
+      <div class="column">
+        <h2>Navigate:</h2>
+        <a class="active" href="index.html">Home</a><br>
+        <a href="aboutus.html">About Us</a><br>
+        <a href="contacts.html">Contact Us</a><br>
+        <a href="reservations.html">Make A Reservation</a><br>
+        <a href="login&signup.html">Login/Signup</a>
+      </div>
+      <div class="column">
+        <h2>Marketing Links:</h2>
+           <a href="">Ongoing Promotions</a><br>
+           <a href="">Theme Nights</a><br>
+           <a href="">League Nights</a><br>
+           <a href="">DM Training</a><br>
+           <a href=""></a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

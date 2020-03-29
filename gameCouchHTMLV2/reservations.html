@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GameCouch</title>
+<style>
+img:hover {
+  opacity: 0.5;
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="title">
+    <img src="img/couchLogo.png" alt="CouchLogo" class="logo">
+    <img src="img/userIcon.png" alt="UserIcon" style="height:75px; width:75px; float:right; border:3px solid; margin-top:50px; margin-right:60px">
+    <p style="float: right; margin-right: 65px; color: white; clear: right">Hello, User</p>
+    <div style="width:50%; margin: 0 auto;">
+      <h1 style="font-size: 50px">GameCouch</h1>
+    </div>
+  </div>
+
+ <div class="header" id="myHeader">
+   <div class="topnav">
+      <a href="index.html">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="contacts.html">Contact Us</a>
+      <a class="active" href="reservations.html">Make A Reservation</a>
+      <a href="login&signup.html">Log In/Sign Up</a>
+   </div>
+   <div style="background-color:#C38D9E; text-align:center; padding:5px;">
+   </div>
+ </div>
+
+ <script>
+   window.onscroll = function() {myFunction()};
+   var header = document.getElementById("myHeader");
+   var sticky = header.offsetTop;
+   function myFunction() {
+     if (window.pageYOffset > sticky) {
+       header.classList.add("sticky");
+     } else {
+       header.classList.remove("sticky");
+     }
+   }
+ </script>
+
+ <div class="content">
+   <h2>Reservations</h2>
+   <hr>
+   <div class="row2" style="border: 1px solid">
+     <div class="column2" style="background-color: #f9e3ba">
+       <h2>Reserve a Game</h2>
+       <a href="gameReservation.html">
+       <img class="imgSelect" src="img/boardgame.png" alt="BoardGame" width="30%" style="padding-left: 205px;"></a>
+       <h3 style="text-align: center;">Here you can buy a game or games and then pick<br>then up in the store of your choosing.<br>
+         *Must be signed in to do this.<h3>
+     </div>
+     <div class="column2" style="background-color: #ffe9c0">
+       <h2>Reserve a Table</h2>
+       <a href="tableReservation.html">
+       <img class="imgSelect" src="img/table.png" alt="Table" width="25%" style="padding-left: 220px;"></a>
+       <h3 style="text-align: center;">Here you can reserve a table for your next gaming session.<br>Bring your own games or rent a game from our selection.<br>
+         *Must be signed in to do this.<h3>
+     </div>
+   </div>
+   <hr>
+ </div>
+
+ <div style="background-color:#C38D9E; text-align:center; padding:5px;">
+ </div>
+  <footer>
+    <div class="row">
+      <div class="column">
+        <h2>Connect With Us:</h2>
+        <a href="https://www.facebook.com">
+        <img border="0" alt="FacebookLink" src="img/facebookLink.png" width="75" height="75"></a>
+        <a href="https://www.twitter.com">
+        <img border="0" alt="TwitterLink" src="img/twitterLink.png" width="75" height="75"></a>
+        <p>Phone: 1-614-972-2440<br>
+           Email: GameCouch@gmail.com<br>
+           Address: 7272 Made Up Blvd, NY, 12345</p>
+        <p>GameCouch | Copyright &copy;1990</p>
+      </div>
+      <div class="column">
+        <h2>Navigate:</h2>
+        <a class="active" href="index.html">Home</a><br>
+        <a href="aboutus.html">About Us</a><br>
+        <a href="contacts.html">Contact Us</a><br>
+        <a href="reservations.html">Make A Reservation</a><br>
+        <a href="login&signup.html">Login/Signup</a>
+      </div>
+      <div class="column">
+        <h2>Marketing Links:</h2>
+           <a href="">Ongoing Promotions</a><br>
+           <a href="">Theme Nights</a><br>
+           <a href="">League Nights</a><br>
+           <a href="">DM Training</a><br>
+           <a href=""></a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
