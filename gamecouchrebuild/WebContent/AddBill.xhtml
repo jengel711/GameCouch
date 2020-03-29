@@ -43,8 +43,11 @@
 		<label>Amount</label>
 		<h:inputText value="#{bill.amount}" />
 		<br />
-		<label>Add to inventory</label>
-		<h:selectBooleanCheckbox value="#{bill.inventory}" />
+		<br />
+		<h:selectOneRadio value="#{bill.inventory}">
+			<f:selectItem itemValue="false" itemLabel="Expense" />
+			<f:selectItem itemValue="true" itemLabel="Inventory" />
+		</h:selectOneRadio>
 		<br />
 		<br />
 		<label>Description</label>

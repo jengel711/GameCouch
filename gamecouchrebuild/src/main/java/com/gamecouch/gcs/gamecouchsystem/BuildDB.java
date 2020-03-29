@@ -40,6 +40,7 @@ public class BuildDB {
 			session.save(new Account(10201, "Accounts Payable", false));
 			session.save(new Account(30000, "Revenues", true));
 			session.save(new Account(24500, "Unearned Revenues", false));
+			session.save(new Account(50000, "Expenses", true));
 						
 			//Journal
 			var entry = new JournalEntry();

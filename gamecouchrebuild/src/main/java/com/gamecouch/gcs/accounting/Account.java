@@ -25,7 +25,7 @@ public class Account implements PersistedData {
 	private String name;
 	private BigDecimal cachedTotal = new BigDecimal(0);
 	private static List<Account> accounts;
-	private boolean isAsset;
+	private boolean asset; //DEAL: Dividends, Expenses, Assets, Losses
 	
 	public Account() {
 		super();
@@ -35,7 +35,7 @@ public class Account implements PersistedData {
 		super();
 		this.accountNumber = accountNumber;
 		this.name = name;
-		this.isAsset = isAsset;
+		this.asset = isAsset;
 	}
 	
 	public Account(long accountNumber, String name, boolean isAsset, BigDecimal cachedTotal) {
@@ -43,7 +43,7 @@ public class Account implements PersistedData {
 		this.accountNumber = accountNumber;
 		this.name = name;
 		this.cachedTotal = cachedTotal;
-		this.isAsset = isAsset;
+		this.asset = isAsset;
 	}
 	
 	
@@ -66,11 +66,11 @@ public class Account implements PersistedData {
 	}
 	
     public boolean isAsset() {
-		return isAsset;
+		return asset;
 	}
 
 	public void setAsset(boolean isAsset) {
-		this.isAsset = isAsset;
+		this.asset = isAsset;
 	}
 
 	@SuppressWarnings("unchecked") //is this really a good idea? Not sure if getTable is designed well
@@ -100,16 +100,16 @@ public class Account implements PersistedData {
 			
 			//assumption: every line will be credit or debit. TODO: validation		
 			if (line.getCredit() == null) { //if debit
-				if (isAsset)
+				if (isAsset())
 					cachedTotal = cachedTotal.add(line.getDebit()); //debits increase asset accounts
 				else
 					cachedTotal = cachedTotal.subtract(line.getDebit()); //liability account
 			}			
 			else { //if credit
-				if (isAsset)
+				if (isAsset())
 					cachedTotal = cachedTotal.subtract(line.getCredit()); //credits decrease asset accounts
 				else
-					cachedTotal = cachedTotal.add(line.getDebit());
+					cachedTotal = cachedTotal.add(line.getCredit());
 			}
 				
 		}

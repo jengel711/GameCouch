@@ -117,26 +117,26 @@ public class BillBean {
 		entry.create();
 		newBill.setJournalEntry(entry);
 
-		// get accounts
-		// TODO: hard coded account numbers are bad
-		Account cash = (Account) lookup.getRowObjectByID(Account.class, Long.valueOf(10102));
-		Account payable = (Account) lookup.getRowObjectByID(Account.class, Long.valueOf(10201));
-		Account inventory = (Account) lookup.getRowObjectByID(Account.class, Long.valueOf(10156));
-		newBill.setVendor(bill.vendor);
-		
 		// create journal lines for entry
-		JournalLine line = new JournalLine(entry, 1, null, bill.getAmount(), cash, "Bill ");
-		lookup.create(line);
-		line = new JournalLine(entry, 2, bill.getAmount(), null, payable, bill.getDescription());
-		lookup.create(line);
-
+		// TODO: hard coded account numbers are bad
+		
+		Account payable = (Account) lookup.getRowObjectByID(Account.class, Long.valueOf(10201));
+		Account account2;
+		
 		if (bill.isInventory()) {
-			line = new JournalLine(entry, 3, bill.getAmount(), null, inventory, null);
-			lookup.create(line);
-
+			account2 = (Account) lookup.getRowObjectByID(Account.class, Long.valueOf(10156)); //inventory
 		}
+		else {
+			account2 = (Account) lookup.getRowObjectByID(Account.class, Long.valueOf(50000)); //expenses
+		}
+		JournalLine line = new JournalLine(entry, 1, bill.getAmount(), null, payable, bill.getDescription());
+		lookup.create(line);
+		line = new JournalLine(entry, 2, null, bill.getAmount(), account2, "Bill ");
+		lookup.create(line);
 
 		// create bill
+
+		newBill.setVendor(bill.vendor);
 		newBill.setDueDate(LocalDate.ofInstant(bill.dueDate.toInstant(), ZoneId.systemDefault()));
 		
 		lookup.create(newBill);
