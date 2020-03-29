@@ -6,7 +6,10 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+
 import com.gamecouch.gcs.gamecouchsystem.Lookup;
 
 @ManagedBean(name = "bill")
@@ -140,8 +143,10 @@ public class BillBean {
 		newBill.setDueDate(LocalDate.ofInstant(bill.dueDate.toInstant(), ZoneId.systemDefault()));
 		
 		lookup.create(newBill);
+		
+		FacesContext.getCurrentInstance().addMessage("NewBill", new FacesMessage(FacesMessage.SEVERITY_INFO,"Success", "Created invoice, ID: " + newBill.getId()));
 
-		return "AddBill"; // TODO: results page, with buttons to choose between making another entry or
+		return "AddBillResult"; // TODO: results page, with buttons to choose between making another entry or
 							// navigating elsewhere.
 	}
 }
