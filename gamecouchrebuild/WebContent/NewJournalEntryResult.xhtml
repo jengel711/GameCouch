@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+<h:head>
+	<title>New Journal Entry</title>
+	<h:outputStylesheet library="css" name="journal.css" />
+	<h:outputScript library="js" name="jquery-3.4.1.js"/>
+</h:head>
+<f:metadata>
+	<f:event listener="#{journal.getNextId()}" type="preRenderView" />
+</f:metadata>
+<h:body id="main">
+
+	<h1>New Journal Entry</h1>
+	<h:form id="NewJournal">
+	</h:form>
+	<h:message for = "NewJournal" /><br /><br />
+	<h:link value="Create another journal entry" outcome="NewJournalEntry"/><br />
+	<h:link value="View journal entries" outcome="ViewGeneralJournal"/>
+
+	
+
+</h:body>
+</html>

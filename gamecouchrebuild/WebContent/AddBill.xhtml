@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+<h:head>
+	<title>Add Bill</title>
+	<h:outputStylesheet library="css" name="journal.css" />
+</h:head>
+<f:metadata>
+	<f:event listener="#{bill.getNextId()}" type="preRenderView" />
+</f:metadata>
+<h:body id="main">
+	<h1>Add a Bill</h1>
+	<h:form id="NewBill">
+		<h:messages />
+
+
+		<label>Invoice Date </label>
+
+		<input type="date" jsf:id="invoiceDate"
+			jsf:value="#{bill.invoiceDate}" required="required">
+		<f:convertDateTime pattern="yyyy-MM-dd" />
+		</input>
+
+		<label>Due Date </label>
+
+		<input type="date" jsf:id="dueDate" jsf:value="#{bill.dueDate}"
+			required="required">
+		<f:convertDateTime pattern="yyyy-MM-dd" />
+		</input>
+		<br />
+		<br />
+
+		<label>Vendor</label>
+		<h:selectOneMenu id="Vendor" value="#{bill.vendor}">
+			<f:selectItems value="#{bill.getVendors()}" var="v" itemValue="#{v}"
+				itemLabel="#{v.name}" />
+
+		</h:selectOneMenu>
+		<br />
+		<br />
+		<label>Amount</label>
+		<h:inputText value="#{bill.amount}" />
+		<br />
+		<label>Add to inventory</label>
+		<h:selectBooleanCheckbox value="#{bill.inventory}" />
+		<br />
+		<br />
+		<label>Description</label>
+
+		<h:inputText value="#{bill.description}" />
+		<br />
+		<br />
+		<h:commandButton id="submit" value="Save Bill"
+			action="#{bill.create(bill)}" />
+
+
+
+
+
+
+
+	</h:form>
+
+</h:body>
+</html>

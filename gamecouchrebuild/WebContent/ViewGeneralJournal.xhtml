@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+	<title>View Journal Entry</title>
+	<h:outputStylesheet library="css" name="journal.css" />
+</h:head>
+<h:body id="main">
+	<h1>General Journal</h1>
+	<!-- TODO: select date range -->
+
+	<h:dataTable value="#{journalReport.entries}" var="l"
+		styleClass="table" headerClass="table-header"
+		rowClasses="table-odd-row,table-even-row">
+
+		<h:column>
+			<f:facet name="header">#</f:facet>				
+    				#{l.id}
+    			</h:column>
+
+		<h:column>
+			<f:facet name="header">Date</f:facet>
+    				#{l.shortDate()}
+    			</h:column>
+
+		<h:column>
+			<h:link value="View Entry" outcome="GenJournalEntry?q=#{l.id}"></h:link>
+		</h:column>
+
+	</h:dataTable>
+
+</h:body>
+</html>
