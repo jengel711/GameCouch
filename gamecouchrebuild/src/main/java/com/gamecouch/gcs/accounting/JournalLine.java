@@ -40,7 +40,7 @@ public class JournalLine implements com.gamecouch.gcs.gamecouchsystem.PersistedD
 		this.journal = entry;
 	}
 	
-	public JournalLine(JournalEntry journal, int lineNumber, double credit, double debit, Account account, String description) {
+	public JournalLine(JournalEntry journal, int lineNumber, double debit, double credit, Account account, String description) {
 		this.journal = journal;
 		this.lineNumber = lineNumber;
 		this.account = account;
@@ -51,7 +51,7 @@ public class JournalLine implements com.gamecouch.gcs.gamecouchsystem.PersistedD
 		
 	}
 	
-	public JournalLine(JournalEntry journal, int lineNumber, BigDecimal credit, BigDecimal debit, Account account, String description) {
+	public JournalLine(JournalEntry journal, int lineNumber, BigDecimal debit, BigDecimal credit, Account account, String description) {
 		this.journal = journal;
 		this.lineNumber = lineNumber;
 		this.account = account;

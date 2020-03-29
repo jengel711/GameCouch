@@ -15,7 +15,8 @@
 	<h:form id="journalEntry">
 		<h:messages />
 		<label>Journal Number </label>
-		<h:inputText id="entry" value="#{viewJournal.journalId}" readonly="true"></h:inputText>
+		<h:inputText id="entry" value="#{viewJournal.journalId}"
+			readonly="true"></h:inputText>
 		<br />
 		<br />
 		<label>Journal Date </label>
@@ -23,8 +24,9 @@
 			readonly="true"></h:inputText>
 		<br />
 		<br />
-		<h:dataTable value="#{viewJournal.journal.lines}" var="l" styleClass="table"
-			headerClass="table-header" rowClasses="table-odd-row,table-even-row">
+		<h:dataTable value="#{viewJournal.journal.lines}" var="l"
+			styleClass="table" headerClass="table-header"
+			rowClasses="table-odd-row,table-even-row">
 
 			<h:column>
 				<f:facet name="header">#</f:facet>				
@@ -33,23 +35,23 @@
 
 			<h:column>
 				<f:facet name="header">Account</f:facet>
-    				<h:outputText value="#{l.account.name}" style="float:left"/>
-    			</h:column>
-
-			<h:column >
-				<f:facet name="header">Credit</f:facet>
-    				<h:outputText value="#{l.credit}" style="float:right"/>
-    			</h:column>
-
-			<h:column >
+				<h:outputText value="#{l.account.name}" style="float:left" />
+			</h:column>
+			<h:column>
 				<f:facet name="header">Debit</f:facet>
-    				<h:outputText value="#{l.debit}" style="float:right"/>
-    			</h:column>
+				<h:outputText value="#{l.debit}" style="float:right" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Credit</f:facet>
+				<h:outputText value="#{l.credit}" style="float:right" />
+			</h:column>
+
+
 
 			<h:column>
 				<f:facet name="header">Description</f:facet>
-    				<h:outputText value="#{l.description}" style="float:left"/>
-    			</h:column>
+				<h:outputText value="#{l.description}" style="float:left" />
+			</h:column>
 
 		</h:dataTable>
 	</h:form>

@@ -13,7 +13,7 @@ import com.gamecouch.gcs.gamecouchsystem.Lookup;
 public class BillBean {
 	private long id;
 	private Date invoiceDate = new Date();
-	private Date dueDate = new Date();
+	private Date dueDate = new Date(); //TODO: validation - warning if date is in the past?
 	private Vendor vendor;
 	private Lookup lookup = new Lookup();
 	private JournalEntry entry;
@@ -129,9 +129,9 @@ public class BillBean {
 		else {
 			account2 = (Account) lookup.getRowObjectByID(Account.class, Long.valueOf(50000)); //expenses
 		}
-		JournalLine line = new JournalLine(entry, 1, bill.getAmount(), null, payable, bill.getDescription());
+		JournalLine line = new JournalLine(entry, 1, null, bill.getAmount(), payable, "Bill");
 		lookup.create(line);
-		line = new JournalLine(entry, 2, null, bill.getAmount(), account2, "Bill ");
+		line = new JournalLine(entry, 2, bill.getAmount(), null, account2, bill.getDescription());
 		lookup.create(line);
 
 		// create bill
