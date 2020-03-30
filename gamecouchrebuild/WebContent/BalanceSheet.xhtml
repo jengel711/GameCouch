@@ -9,7 +9,7 @@
 <h:body id="main">
 	<h1>GameCouch</h1>
 	<h2>
-		Balance Sheet<br />#{report.today}
+		Balance Sheet<br />#{balance.today}
 	</h2>
 	<!-- TODO: select date range -->
 
@@ -18,7 +18,7 @@
 	<h2>Assets</h2>
 	<h3>Current assets</h3>
 
-	<h:dataTable value="#{report.assets}" var="a" styleClass="table"
+	<h:dataTable value="#{balance.assets}" var="a" styleClass="table"
 		rowClasses="table-odd-row,table-even-row">
 
 		<h:column>		
@@ -33,7 +33,7 @@
 	</h:dataTable>
 	<h3>Property, plant &amp; equipment</h3>
 	<br />
-	<h:dataTable value="#{report.property}" var="a" styleClass="table"
+	<h:dataTable value="#{balance.property}" var="a" styleClass="table"
 		rowClasses="table-odd-row,table-even-row">
 
 		<h:column>		
@@ -48,7 +48,7 @@
 	</h:dataTable>
 	<h3>Intangible assets</h3>
 	<br />
-	<h:dataTable value="#{report.intangible}" var="a" styleClass="table"
+	<h:dataTable value="#{balance.intangible}" var="a" styleClass="table"
 		rowClasses="table-odd-row,table-even-row">
 
 		<h:column>		
@@ -63,11 +63,11 @@
 	</h:dataTable>
 	<h3>Total assets</h3>
 	
-#{report.totalAssets}
+#{balance.totalAssets}
 	<h2>Liabilities</h2>
 
 	<h3>Current liabilities</h3>
-		<h:dataTable value="#{report.liabilities}" var="a" styleClass="table"
+		<h:dataTable value="#{balance.liabilities}" var="a" styleClass="table"
 		rowClasses="table-odd-row,table-even-row">
 
 		<h:column>		
@@ -82,14 +82,15 @@
 	</h:dataTable>
 
 	<h3>Total liabilities</h3>
-	#{report.totalLiabilities}
+	#{balance.totalLiabilities}
 
 
 	<h2>Equity</h2>
-	#{report.equity}
+	#{balance.equity}
 
 	<h3>Total liabilities &amp; equity</h3>
-	#{report.totalLiabilities + report.equity}
-
+	#{balance.totalLiabilities + balance.equity}
+<br /><br />
+	<h:link value="Home" outcome="Accounting"/>
 </h:body>
 </html>

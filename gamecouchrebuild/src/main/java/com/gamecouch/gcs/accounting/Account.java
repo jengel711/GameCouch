@@ -93,12 +93,22 @@ public class Account implements PersistedData {
 		var lookup = new Lookup();
 		var journals = lookup.getTable(JournalLine.class);
 		
+		boolean zeroed = false;
+		
+		
+		
 		for (Object j : journals) {			
 			JournalLine line = (JournalLine) j;
-			if (line.getAccount() != this) //TODO: replace with SQL Where query or simliar hibernate feature 
+			if (line.getAccount() != this) {				//TODO: replace with SQL Where query or simliar hibernate feature
 				continue;
+			}
+				
+			if (!zeroed) { //the first time we find a line for this account, zero the account
+				cachedTotal = BigDecimal.ZERO;
+				zeroed = true;
+			}
 			
-			cachedTotal = BigDecimal.ZERO;
+			
 			//assumption: every line will be credit or debit. TODO: validation		
 			if (line.getCredit() == null) { //if debit
 				if (isAsset())

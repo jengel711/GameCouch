@@ -72,4 +72,15 @@ public class Lookup {
 		session.getTransaction().commit();
     }
     
+    public List<Object> cogs() {
+    	String sqlString = "SELECT TOP (1000) [id]\r\n" + 
+    			"      ,[credit]\r\n" + 
+    			"	  ,[account_accountNumber]\r\n" + 
+    			"\r\n" + 
+    			"  FROM [gamecouch].[dbo].[JournalLine]\r\n" + 
+    			"  WHERE credit IS NOT NULL\r\n" + 
+    			"  AND account_accountNumber = 10156";
+		return session.createNativeQuery(sqlString).getResultList();
+    }
+    
 }
