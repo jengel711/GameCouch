@@ -21,7 +21,7 @@ import com.gamecouch.gcs.gamecouchsystem.PersistedData;
 public class Account implements PersistedData {
 	
 	@Id
-	private long accountNumber; //doesn't auto-generate, so buildDB must set the account numbers
+	private Long accountNumber; //doesn't auto-generate, so buildDB must set the account numbers
 	private String name;
 	private BigDecimal cachedTotal = new BigDecimal(0);
 	private static List<Account> accounts;
@@ -48,8 +48,14 @@ public class Account implements PersistedData {
 	
 	
 	
-	public long getAccountNumber() {
+
+
+	public Long getAccountNumber() {
 		return accountNumber;
+	}
+
+	public void setAccountNumber(Long accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 
 	public BigDecimal getCachedTotal() {

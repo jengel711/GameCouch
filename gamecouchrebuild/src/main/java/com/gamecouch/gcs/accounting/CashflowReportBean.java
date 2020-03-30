@@ -35,10 +35,9 @@ public class CashflowReportBean {
 		}
 		
 		Account revenue = allAccounts.get("Revenues");
-		revenue.setCachedTotal(new BigDecimal(20000)); //TODO: remove this test value
 		double revenueValue = revenue.getCachedTotal().doubleValue();
 		Account expenses = allAccounts.get("Expenses");
-		income = revenueValue - expenses.getCachedTotal().doubleValue();//better to do the calcuation as BigDecimal?
+		income = revenueValue - expenses.getCachedTotal().doubleValue();//better to do the calculation as BigDecimal?
 		
 		//TODO: All of these should be changes over the period
 		var depreciation = new Account(0,"Depreciation",false,new BigDecimal(1000));

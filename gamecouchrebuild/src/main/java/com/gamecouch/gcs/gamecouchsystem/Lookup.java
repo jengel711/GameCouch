@@ -9,6 +9,8 @@ import org.hibernate.Session;
 //Current pattern holds open a permanent session for lookups. Is this a good design?
 //seems to throw some errors regarding memory leak and connection reset in Tomcat console?
 
+import com.gamecouch.gcs.accounting.JournalLine;
+
 /**
  * Fetches information from the database.
  * 
@@ -72,15 +74,20 @@ public class Lookup {
 		session.getTransaction().commit();
     }
     
-    public List<Object> cogs() {
-    	String sqlString = "SELECT TOP (1000) [id]\r\n" + 
-    			"      ,[credit]\r\n" + 
-    			"	  ,[account_accountNumber]\r\n" + 
-    			"\r\n" + 
-    			"  FROM [gamecouch].[dbo].[JournalLine]\r\n" + 
-    			"  WHERE credit IS NOT NULL\r\n" + 
-    			"  AND account_accountNumber = 10156";
-		return session.createNativeQuery(sqlString).getResultList();
+    @SuppressWarnings("unchecked")
+	public List<JournalLine> cogs() {
+    	return session.createQuery(
+    			"select l " +
+    			"from JournalLine l " +
+    			"where l.credit is not null ")    			
+    			.getResultList();
+    	
+    	/*
+    	 * "and l.account = :accountNumber", JournalLine.class)
+    			.setParameter("accountNumber", 10156L)
+    	 * 
+    	String sqlString = "SELECT TOP (1000) [id],[credit],[account_accountNumber] FROM [dbo].[JournalLine] WHERE credit IS NOT NULL AND account_accountNumber = 10156";
+		return session.createNativeQuery(sqlString).getResultList();*/
     }
     
 }
