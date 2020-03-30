@@ -19,6 +19,7 @@
 
 		<label>Journal Number </label>
 		<h:inputText id="entry" value="#{journal.id}" required="true">
+			<f:validateLongRange minimum="1" />
 		</h:inputText>
 		<br />
 		<br />
@@ -51,12 +52,16 @@
 
 			<h:column>
 				<f:facet name="header">Debit</f:facet>
-				<h:inputText value="#{l.debit}"></h:inputText>
+				<h:inputText value="#{l.debit}">
+					<f:validateDoubleRange minimum="0.01" />
+				</h:inputText>
 			</h:column>
 
 			<h:column>
 				<f:facet name="header">Credit</f:facet>
-				<h:inputText value="#{l.credit}"></h:inputText>
+				<h:inputText value="#{l.credit}">
+					<f:validateDoubleRange minimum="0.01" />
+				</h:inputText>
 
 			</h:column>
 
@@ -100,6 +105,6 @@
 	
 	</script>
 
-
+	<h:link value="Home" outcome="Accounting" />
 </h:body>
 </html>

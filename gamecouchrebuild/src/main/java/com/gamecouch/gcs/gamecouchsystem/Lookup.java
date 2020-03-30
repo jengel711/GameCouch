@@ -41,7 +41,7 @@ public class Lookup {
 		return session.get(objectClass, id);
 	}
 	
-	//TODO: database-agnostic implementation
+	//TODO: database-agnostic implementation (low priority)
 	public long getNextID(Class<?> objectClass) { 
 		String sqlString = "SELECT IDENT_CURRENT('" + objectClass.getSimpleName() + "')";
 		List<Object> result = session.createNativeQuery(sqlString).getResultList();
@@ -75,7 +75,7 @@ public class Lookup {
     }
     
     @SuppressWarnings("unchecked")
-	public List<JournalLine> cogs() {
+	public List<JournalLine> cogs() { //I'm certain this should be in this class...
     	return session.createQuery(
     			"select l " +
     			"from JournalLine l " +

@@ -41,7 +41,9 @@
 		<br />
 		<br />
 		<label>Amount</label>
-		<h:inputText value="#{bill.amount}" />
+		<h:inputText label="amount" value="#{bill.amount}" required="true">
+			<f:validateDoubleRange minimum="0.01" />
+		</h:inputText>
 		<br />
 		<br />
 		<h:selectOneRadio value="#{bill.inventory}">
@@ -65,6 +67,6 @@
 
 
 	</h:form>
-
+<h:link value="Home" outcome="Accounting"/>
 </h:body>
 </html>

@@ -1,6 +1,7 @@
 package com.gamecouch.gcs.accounting;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -35,9 +36,9 @@ public class CashflowReportBean {
 		}
 		
 		Account revenue = allAccounts.get("Revenues");
-		double revenueValue = revenue.getCachedTotal().doubleValue();
+		double revenueValue = revenue.getCachedTotal().setScale(2, RoundingMode.HALF_UP).doubleValue();
 		Account expenses = allAccounts.get("Expenses");
-		income = revenueValue - expenses.getCachedTotal().doubleValue();//better to do the calculation as BigDecimal?
+		income = revenueValue - expenses.getCachedTotal().setScale(2, RoundingMode.HALF_UP).doubleValue();//better to do the calculation as BigDecimal?
 		
 		//TODO: All of these should be changes over the period
 		var depreciation = new Account(0,"Depreciation",false,new BigDecimal(1000));
@@ -58,7 +59,7 @@ public class CashflowReportBean {
 		opCash = opCash.add(taxes.getCachedTotal());
 		opCash = opCash.subtract(allAccounts.get("Accounts Receivable").getCachedTotal());
 		opCash = opCash.subtract(allAccounts.get("Inventory").getCachedTotal());
-		operations = opCash.doubleValue();
+		operations = opCash.setScale(2, RoundingMode.HALF_UP).doubleValue();
 	}
 
 	public Map<String, Account> getAllAccounts() {

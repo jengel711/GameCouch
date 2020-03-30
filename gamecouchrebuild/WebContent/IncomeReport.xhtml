@@ -21,7 +21,9 @@ todo: limit by month or year
 		</h:column>
 
 		<h:column>
-			<h:outputText value="#{a.cachedTotal}" style="float:right" />
+			<h:outputFormat value="{0,number,currency}" style="float:right" >
+				<f:param value="#{a.cachedTotal}"></f:param>
+			</h:outputFormat>
 
 		</h:column>
 
@@ -35,7 +37,9 @@ todo: limit by month or year
 		</h:column>
 
 		<h:column>
-			<h:outputText value="#{a.cachedTotal}" style="float:right" />
+			<h:outputFormat value="{0,number,currency}" style="float:right" >
+				<f:param value="#{a.cachedTotal}"></f:param>
+			</h:outputFormat>
 
 		</h:column>
 
