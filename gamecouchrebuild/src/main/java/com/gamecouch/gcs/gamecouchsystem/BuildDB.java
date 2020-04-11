@@ -6,6 +6,7 @@ import java.util.Date;
 import org.hibernate.*;
 
 import com.gamecouch.gcs.accounting.*;
+import com.gamecouch.gcs.reservation.PhysicalTable;
 
 
 /**
@@ -55,6 +56,15 @@ public class BuildDB {
 			//Bill
 			session.save(new Bill(LocalDate.of(2020, 6, 1),entry, vendor));
 			
+			
+			//PhysicalTables
+			session.save(new PhysicalTable((byte)8));
+
+			session.save(new PhysicalTable((byte)4));
+
+			session.save(new PhysicalTable((byte)8));
+
+			session.save(new PhysicalTable((byte)4));
 			
 			//commit
 			session.getTransaction().commit();

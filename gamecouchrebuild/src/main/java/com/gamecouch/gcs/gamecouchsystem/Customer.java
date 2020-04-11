@@ -26,11 +26,14 @@ public class Customer {
 	private String name;
 
 	@NaturalId(mutable = true)
-	private String email; // add index?
+	private String email; //TODO: add index?
 
 	private byte[] password;
 	private int loginAttempts = 0;
 	private Date lastAttempt;
+	private String address;
+	private String phone;
+	private Date created;
 	
 	@ManyToOne
 	private Location defaultLocation;
@@ -139,6 +142,30 @@ public class Customer {
 			e.printStackTrace();
 		}
 		return "Login";
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public Date getCreated() {
+		return created;
+	}
+
+	public void setCreated(Date created) {
+		this.created = created;
 	}
 
 }

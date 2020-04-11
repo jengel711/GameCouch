@@ -5,7 +5,7 @@
 	<session-factory>
 		 <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
 		<property name="hibernate.connection.password">gcsgcsgcs</property>
-		<property name="hibernate.connection.url">jdbc:sqlserver://gamecouchdb.cbojpj3zkht8.us-east-1.rds.amazonaws.com;databaseName=gcsdemo</property>
+		<property name="hibernate.connection.url">jdbc:sqlserver://localhost;databaseName=gamecouch</property>
 		<property name="hibernate.connection.username">admin</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
 		<!--<property name="hibernate.connection.datasource">java:comp/env/jdbc/GameCouchDB</property>-->
@@ -22,5 +22,8 @@
 		<mapping class="com.gamecouch.gcs.accounting.JournalEntry" />
 		<mapping class="com.gamecouch.gcs.accounting.JournalLine" />
 		<mapping class="com.gamecouch.gcs.accounting.Vendor" />
+		
+		<mapping class="com.gamecouch.gcs.reservation.PhysicalTable" />
+		<mapping class="com.gamecouch.gcs.reservation.Reservation" />
 	</session-factory>
 </hibernate-configuration>

@@ -1,6 +1,7 @@
 package com.gamecouch.gcs.gamecouchsystem;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -22,6 +23,13 @@ public class Location implements PersistedData {
     private long id;
     
     private String name;
+    private String address;
+    private String phone;
+    
+    //private List<com.gamecouch.gcs.reservation.PhysicalTable> tables; cannot determine type
+    
+    private Date hoursStart;
+    private Date hoursEnd;
     
     @Enumerated(EnumType.STRING)
     private State state;
@@ -94,5 +102,45 @@ public class Location implements PersistedData {
     public String toString() {
         return String.valueOf(id);
     }
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+/*
+	public List<com.gamecouch.gcs.reservation.PhysicalTable> getTables() {
+		return tables;
+	}
+
+	public void setTables(List<com.gamecouch.gcs.reservation.PhysicalTable> tables) {
+		this.tables = tables;
+	}
+*/
+	public Date getHoursStart() {
+		return hoursStart;
+	}
+
+	public void setHoursStart(Date hoursStart) {
+		this.hoursStart = hoursStart;
+	}
+
+	public Date getHoursEnd() {
+		return hoursEnd;
+	}
+
+	public void setHoursEnd(Date hoursEnd) {
+		this.hoursEnd = hoursEnd;
+	}
 
 }

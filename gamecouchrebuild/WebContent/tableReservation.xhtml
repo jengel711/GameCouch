@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+<title>GameCouch</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/styles.css" />
+</h:head>
+<h:body>
+
+  <div class="title">
+    <img src="img/couchLogo.png" alt="CouchLogo" class="logo" />
+    <img src="img/userIcon.png" alt="UserIcon" style="height:75px; width:75px; float:right; border:3px solid; margin-top:50px; margin-right:60px" />
+    <p style="float: right; margin-right: 65px; color: white; clear: right">Hello, User</p>
+    <div style="width:50%; margin: 0 auto;">
+      <h1 style="font-size: 50px">GameCouch</h1>
+    </div>
+  </div>
+
+ <div class="header" id="myHeader">
+   <div class="topnav">
+      <a href="index.html">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="contacts.html">Contact Us</a>
+      <a href="reservations.html">Make A Reservation</a>
+      <a href="login&amp;signup.html">Log In/Sign Up</a>
+   </div>
+   <div style="background-color:#C38D9E; text-align:center; padding:5px;">
+   </div>
+ </div>
+
+ <script>
+   window.onscroll = function() {myFunction()};
+   var header = document.getElementById("myHeader");
+   var sticky = header.offsetTop;
+   function myFunction() {
+     if (window.pageYOffset > sticky) {
+       header.classList.add("sticky");
+     } else {
+       header.classList.remove("sticky");
+     }
+   }
+ </script>
+
+ <div>
+   <h2 style="text-align:center">Reserve a Table</h2>
+
+   <h:form name="tableFrm" id="tableFrm" action="tableCheckout.xhtml">
+   <div style="padding-left:170px; padding-right:170px">
+     <div style="float:left">
+       <label style="font-size: 20px">1. Reservation Date:</label>
+       <br />
+       <input style="font-size: 15px" type="date" name="reservationDate" jsf:id="reservationDate" jsf:value="#{reservation.reservationDate}">
+       <f:convertDateTime pattern="yyyy-MM-dd" />
+       </input>
+     </div>
+     <div style="float:right">
+       <label style="font-size: 20px;">3. Reservation Time:</label>
+       <br />
+        <h:selectManyListbox name="reservationTime" id="reservationTime" style="font-size: 15px" size="5" value="#{reservation.timeSlot}">
+        <f:selectItem itemValue ="0" itemLabel="12:00pm to 2:00pm" />
+        <f:selectItem itemValue ="2"  itemLabel="2:00pm to 4:00pm"/>
+        <f:selectItem itemValue ="4"  itemLabel="4:00pm to 6:00pm"/>
+        <f:selectItem itemValue ="6" itemLabel="6:00pm to 8:00pm"/>
+        <f:selectItem itemValue ="8" itemLabel="8:00pm to 10:00pm"/>
+        </h:selectManyListbox>
+     </div>
+     <br /><br /><br />
+
+     <div>
+       <label style="font-size: 20px">2. Pick a Table:</label>
+       <br /><br />
+       <label>
+         <input type="radio" a:name="#{hiddenItem.clientId}" jsf:id="table1" value="1" checked="true"></input>
+         <img src="img/tableFor8.png" alt="TableFor8" style="height:200px; width:350px;" />
+       </label>
+
+       <label>
+         <input type="radio" a:name="#{hiddenItem.clientId}" jsf:id="table2" value="2"></input>
+         <img src="img/tableFor4.png" alt="TableFor4" style="height:200px; width:200px; margin-left:20px" />
+       </label>
+       <br />
+       <label>
+         <input type="radio" a:name="#{hiddenItem.clientId}" jsf:id="table3" value="3"></input>
+         <img src="img/tableFor8.png" alt="TableFor8" style="height:200px; width:350px;" />
+       </label>
+
+       <label>
+         <input type="radio" a:name="#{hiddenItem.clientId}" jsf:id="table4" value="4"></input>
+         <img src="img/tableFor4.png" alt="TableFor4" style="height:200px; width:200px; margin-left:20px" />
+       </label>
+       <h:inputHidden id="selectedTable" binding="#{hiddenItem}" value="#{reservation.table}" rendered="#{facesContext.currentPhaseId.ordinal ne 6}" />
+     </div>
+     <br />
+     <h:commandButton id="submit" value="Proceed to Checkout"
+			action="#{reservation.create(reservation)}" />
+     <br /><br />
+     </div>
+    </h:form>
+   <h:messages />
+
+   <script>
+       function getInputValue(){
+         var filledOut = true;
+         var x = document.getElementById("reservationTime").value;
+         if(x == ""){
+           filledOut = false;
+         }
+         x = document.getElementById("reservationDate").value;
+         if(x == ""){
+           filledOut = false;
+         }
+
+         if(filledOut == true){
+           document.tableFrm.submit();
+         }else{
+           alert("You must make a date, time and table selection.");
+         }
+
+       }
+   </script>
+
+
+
+   <div style="background-color:#C38D9E; text-align:center; padding:5px;">
+   </div>
+    <footer>
+      <div class="row">
+        <div class="column">
+          <h2>Connect With Us:</h2>
+          <a href="https://www.facebook.com">
+          <img border="0" alt="FacebookLink" src="img/facebookLink.png" width="75" height="75" /></a>
+          <a href="https://www.twitter.com">
+          <img border="0" alt="TwitterLink" src="img/twitterLink.png" width="75" height="75" /></a>
+          <p>Phone: 1-614-972-2440<br />
+             Email: GameCouch&#64;gmail.com<br />
+             Address: 7272 Made Up Blvd, NY, 12345</p>
+          <p>GameCouch | Copyright &#169;1990</p>
+        </div>
+        <div class="column">
+          <h2>Navigate:</h2>
+          <a class="active" href="index.html">Home</a><br />
+          <a href="aboutus.html">About Us</a><br />
+          <a href="contacts.html">Contact Us</a><br />
+          <a href="reservations.html">Make A Reservation</a><br />
+          <a href="login&amp;signup.html">Login/Signup</a>
+        </div>
+        <div class="column">
+          <h2>Marketing Links:</h2>
+             <a href="">Ongoing Promotions</a><br />
+             <a href="">Theme Nights</a><br />
+             <a href="">League Nights</a><br />
+             <a href="">DM Training</a><br />
+             <a href=""></a>
+          
+        </div>
+      </div>
+    </footer>
+    </div>
+  </h:body>
+  </html>
