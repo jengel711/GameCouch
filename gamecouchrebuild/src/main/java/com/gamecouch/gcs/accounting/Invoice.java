@@ -25,7 +25,7 @@ public abstract class Invoice implements PersistedData {
 	private LocalDate dueDate;
 	
 	@ManyToOne
-	private JournalEntry journalEntry;
+	private JournalEntry journalEntry; //TODO: why is this many to one? I don't remember...
 	
 	public Invoice(LocalDate dueDate, JournalEntry journalEntry) {
 		super();

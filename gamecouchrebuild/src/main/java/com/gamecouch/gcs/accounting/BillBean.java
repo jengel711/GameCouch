@@ -140,7 +140,7 @@ public class BillBean {
 		// create bill
 
 		newBill.setVendor(bill.vendor);
-		newBill.setDueDate(LocalDate.ofInstant(bill.dueDate.toInstant(), ZoneId.systemDefault()));
+		newBill.setDueDate(LocalDate.ofInstant(bill.dueDate.toInstant(), ZoneId.systemDefault()));//TODO: real time zones
 		
 		lookup.create(newBill);
 		

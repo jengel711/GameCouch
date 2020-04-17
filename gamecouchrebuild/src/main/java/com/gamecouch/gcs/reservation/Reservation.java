@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 
 import org.hibernate.Session;
+import com.gamecouch.gcs.accounting.ReservationInvoice;
 
 import com.gamecouch.gcs.gamecouchsystem.*;
 
@@ -30,6 +31,25 @@ public class Reservation implements PersistedData {
 	@ManyToOne
 	private PhysicalTable table;//multiple tables at a later time?
 	
+	@OneToOne
+	private ReservationInvoice invoice;
+	
+	public Reservation() {}
+	
+	public Reservation(Customer customer, Location location, Date reservationTime, int duration,
+			byte partySize, PhysicalTable table, ReservationInvoice invoice) {
+		super();
+		this.customer = customer;
+		this.location = location;
+		this.reservationTime = reservationTime;
+		this.duration = duration;
+		this.partySize = partySize;
+		
+		var lookup = new Lookup();
+				
+		this.table = table;
+		this.invoice = invoice;
+	}
 	public long getId() {
 		return id;
 	}
@@ -75,6 +95,12 @@ public class Reservation implements PersistedData {
 	}
 	public void setTable(PhysicalTable table) {
 		this.table = table;
+	}
+	public ReservationInvoice getInvoice() {
+		return invoice;
+	}
+	public void setInvoice(ReservationInvoice invoice) {
+		this.invoice = invoice;
 	}
 	
 

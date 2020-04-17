@@ -38,7 +38,7 @@ public class CashflowReportBean {
 		Account revenue = allAccounts.get("Revenues");
 		double revenueValue = revenue.getCachedTotal().setScale(2, RoundingMode.HALF_UP).doubleValue();
 		Account expenses = allAccounts.get("Expenses");
-		income = revenueValue - expenses.getCachedTotal().setScale(2, RoundingMode.HALF_UP).doubleValue();//better to do the calculation as BigDecimal?
+		income = revenueValue - expenses.getCachedTotal().setScale(2, RoundingMode.HALF_UP).doubleValue();//better to do the calculation as BigDecimal? Can we dispose of the scale and do it all in jsf?
 		
 		//TODO: All of these should be changes over the period
 		var depreciation = new Account(0,"Depreciation",false,new BigDecimal(1000));

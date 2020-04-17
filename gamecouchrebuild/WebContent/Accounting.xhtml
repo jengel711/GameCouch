@@ -5,31 +5,40 @@
 	xmlns:jsf="http://xmlns.jcp.org/jsf">
 <h:head>
 	<title>Accounting</title>
+	<style>
+	body{
+		background-color: gray;
+	}
+	</style>
 </h:head>
 
 <h:body id="main">
-	<h1>Accounting</h1>
-	<h:link value="Add a Bill" outcome="AddBill" />
-	<br />
-	<h:link value="Add a Journal Entry" outcome="NewJournalEntry" />
-	<br />
-	<h:link value="View General Journal" outcome="ViewGeneralJournal" />
-	<br /><br />
-
-	<h:form>
-		<label>View Report: </label>
-		<h:selectOneMenu value="#{accounting.report}">
-			<f:selectItem itemValue="1" itemLabel="Balance Sheet" />
-
-			<f:selectItem itemValue="2" itemLabel="Cashflow Statement" />
-
-			<f:selectItem itemValue="3" itemLabel="Profit &amp; Loss Statement" />
-		</h:selectOneMenu>
-		<br />
-
-		<h:commandButton id="submit" value="Submit"
-			action="#{accounting.viewReport()}" />
-	</h:form>
-	
+	<div style="margin: auto; width: 50%; border: 8px solid #C38D9E; padding: 10px; background-color: #FFE5B4">
+		<div style="margin: auto; width: 50%;">
+			<img src="img/couchLogo.png" alt="CouchLogo" height="250" width="300" style="border: 2px solid black"/>
+			<h1>Accounting</h1>
+			<h:link value="Add a Bill" outcome="AddBill" style="color:black"/>
+			<br />
+			<h:link value="Add a Journal Entry" outcome="NewJournalEntry" style="color:black"/>
+			<br />
+			<h:link value="View General Journal" outcome="ViewGeneralJournal" style="color:black"/>
+			<br /><br />
+		
+			<h:form>
+				<label>View Report: </label>
+				<h:selectOneMenu value="#{accounting.report}">
+					<f:selectItem itemValue="1" itemLabel="Balance Sheet" />
+		
+					<f:selectItem itemValue="2" itemLabel="Cashflow Statement" />
+		
+					<f:selectItem itemValue="3" itemLabel="Profit &amp; Loss Statement" />
+				</h:selectOneMenu>
+				<br />
+		
+				<h:commandButton id="submit" value="Submit"
+					action="#{accounting.viewReport()}" />
+			</h:form>
+		</div>
+	</div>
 </h:body>
 </html>

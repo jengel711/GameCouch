@@ -9,7 +9,7 @@
 		<property name="hibernate.connection.username">admin</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
 		<!--<property name="hibernate.connection.datasource">java:comp/env/jdbc/GameCouchDB</property>-->
-		<property name="hbm2ddl.auto">create</property>
+		<property name="hbm2ddl.auto">validate</property>
 		<!-- JDBC connection pool (use the built-in) -->
 		<!--  <property name="connection.pool_size">1</property> -->
 		<property name="current_session_context_class">thread</property>
@@ -27,5 +27,6 @@
 		<mapping class="com.gamecouch.gcs.accounting.Vendor" />		
 		<mapping class="com.gamecouch.gcs.reservation.PhysicalTable" />
 		<mapping class="com.gamecouch.gcs.reservation.Reservation" />
+		<mapping class="com.gamecouch.gcs.accounting.ReservationInvoice" />
 	</session-factory>
 </hibernate-configuration>
