@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+<h:head>
+	<title>Add Bill</title>
+	<h:outputStylesheet library="css" name="journal.css" />
+	<style>
+	body{
+		background-color: gray;
+	}
+	</style>
+</h:head>
+<h:body id="main">
+	<div style="margin: auto; width: 50%; border: 8px solid #C38D9E; padding: 10px; background-color: #FFE5B4">
+		<div style="margin: auto; width: 50%;">
+			<img src="img/couchLogo.png" alt="CouchLogo" height="250" width="300" style="border: 2px solid black"/>
+
+			<h1>Add a Bill</h1>
+			<h:form id="NewBill">
+			</h:form>
+		<h:message for="NewBill" /><br /><br />
+			<h:link value="Add another bill" outcome="AddBill"/><br />
+			<h:link value="Home" outcome="Accounting"/>
+		</div>
+	</div>
+</h:body>
+</html>
