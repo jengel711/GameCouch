@@ -30,6 +30,8 @@
 					jsf:value="#{bill.invoiceDate}" required="required">
 				<f:convertDateTime pattern="yyyy-MM-dd" />
 				</input>
+				<br />
+				<br />
 
 				<label>Due Date </label>
 
@@ -40,7 +42,7 @@
 				<br />
 				<br />
 
-				<label>Vendor</label>
+				<label>Vendor </label>
 				<h:selectOneMenu id="Vendor" value="#{bill.vendor}">
 					<f:selectItems value="#{bill.getVendors()}" var="v" itemValue="#{v}"
 						itemLabel="#{v.name}" />
@@ -48,7 +50,7 @@
 				</h:selectOneMenu>
 				<br />
 				<br />
-				<label>Amount</label>
+				<label>Amount </label>
 				<h:inputText label="amount" value="#{bill.amount}" required="true">
 					<f:validateDoubleRange minimum="0.01" />
 				</h:inputText>
@@ -75,6 +77,8 @@
 
 
 			</h:form>
+			<br />
+				<br />
 		<h:link value="Home" outcome="Accounting"/>
 		</div>
 	</div>
