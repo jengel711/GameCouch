@@ -163,8 +163,8 @@ public class BuildDB {
 		session.save(new JournalLine(entry, 2, 0.0,resFee,unearned,"reservation fee"));
 				
 		//Expected usage fee
-		session.save(new JournalLine(entry, 1, 0.0,usageFee,revenues,""));
-		session.save(new JournalLine(entry, 2, usageFee,0.0,receivable,"usage fee"));
+		session.save(new JournalLine(entry, 3, 0.0,usageFee,revenues,""));
+		session.save(new JournalLine(entry, 4, usageFee,0.0,receivable,"usage fee"));
 		//TODO: might have credit/debit backwards
 		
 		System.out.println(" Creating invoice");
