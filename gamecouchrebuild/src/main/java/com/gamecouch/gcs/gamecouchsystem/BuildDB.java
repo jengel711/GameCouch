@@ -50,11 +50,11 @@ public class BuildDB {
 			session.save(new JournalLine(entry, 1, 0.0, 1.25, cash, ""));
 			session.save(new JournalLine(entry, 2, 1.25, 0.0, inventory, "Candy"));
 			//Vendor
-			var vendor = new Vendor("dummyVendor","123 Address St, Columbus OH 43202");
-			session.save(vendor);
+			//var vendor = new Vendor("dummyVendor","123 Address St, Columbus OH 43202");
+			//session.save(vendor);
 			
 			//Bill
-			session.save(new Bill(LocalDate.of(2020, 6, 1),entry, vendor));
+			//session.save(new Bill(LocalDate.of(2020, 6, 1),entry, vendor));
 			
 			
 			//PhysicalTables
