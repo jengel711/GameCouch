@@ -1,5 +1,6 @@
 package com.gamecouch.gcs.gamecouchsystem;
 
+import java.io.Serializable;
 import java.security.GeneralSecurityException;
 import java.util.Date;
 
@@ -18,7 +19,12 @@ import org.hibernate.type.DateType;
 @RequestScoped
 @Entity
 @Table
-public class Customer {
+public class Customer implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

@@ -9,7 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import com.gamecouch.gcs.gamecouchsystem.Lookup;
+import com.gamecouch.gcs.gamecouchsystem.*;
 
 @ManagedBean(name="reservation")
 @ViewScoped
@@ -40,9 +40,10 @@ public class ReservationBean {
 		this.timeSlot = timeSlot;
 	}
 	
-	public String create(ReservationBean reservation) {
+	public String create(ReservationBean reservation, Customer customer) {
 		Reservation newRes = new Reservation();
-		
+		newRes.setCustomer(customer);
+		newRes.setLocation(customer.getDefaultLocation()); //TODO: allow selection of location
 
 		newRes.setTable((PhysicalTable) lookup.getRowObjectByID(PhysicalTable.class, reservation.getTable()));
 		
@@ -61,5 +62,9 @@ public class ReservationBean {
 	}
 	public void setTestValue(String testvalue) {
 		this.testValue = testvalue;
+	}
+	
+	public String getSessionID() {
+		return FacesContext.getCurrentInstance().getExternalContext().getSessionMap().toString();
 	}
 }

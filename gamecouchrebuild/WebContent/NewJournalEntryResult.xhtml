@@ -7,17 +7,25 @@
 	<title>New Journal Entry</title>
 	<h:outputStylesheet library="css" name="journal.css" />
 	<h:outputScript library="js" name="jquery-3.4.1.js"/>
+	<style>
+	body{
+		background-color: gray;
+	}
+	</style>
 </h:head>
 <h:body id="main">
-
-	<h1>New Journal Entry</h1>
-	<h:form id="NewJournal">
-	</h:form>
-	<h:message for = "NewJournal" /><br /><br />
-	<h:link value="Create another journal entry" outcome="NewJournalEntry"/><br />
-	<h:link value="View journal entries" outcome="ViewGeneralJournal"/><br />
-	<h:link value="Home" outcome="Accounting"/>
-	
+	<div style="margin: auto; width: 600px; border: 8px solid #C38D9E; padding: 10px; background-color: #FFE5B4">
+		<div style="margin: auto; width: 300px;">
+			<img src="img/couchLogo.png" alt="CouchLogo" height="250" width="300" style="border: 2px solid black"/>
+			<h1>New Journal Entry</h1>
+			<h:form id="NewJournal">
+			</h:form>
+			<h:message for = "NewJournal" /><br /><br />
+			<h:link value="Create another journal entry" outcome="NewJournalEntry"/><br />
+			<h:link value="View journal entries" outcome="ViewGeneralJournal"/><br />
+			<h:link value="Home" outcome="Accounting"/>
+		</div>
+	</div>
 
 </h:body>
 </html>

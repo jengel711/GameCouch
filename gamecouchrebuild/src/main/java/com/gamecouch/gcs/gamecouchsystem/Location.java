@@ -1,5 +1,6 @@
 package com.gamecouch.gcs.gamecouchsystem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,9 +17,14 @@ import javax.persistence.*;
 @ViewScoped
 @Entity
 @Table
-public class Location implements PersistedData {
+public class Location implements PersistedData,Serializable {
  
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6135572819648433364L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     

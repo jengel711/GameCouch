@@ -14,7 +14,7 @@
   <div class="title">
     <img src="img/couchLogo.png" alt="CouchLogo" class="logo" />
     <img src="img/userIcon.png" alt="UserIcon" style="height:75px; width:75px; float:right; border:3px solid; margin-top:50px; margin-right:60px" />
-    <p style="float: right; margin-right: 65px; color: white; clear: right">Hello, User</p>
+    <p style="float: right; margin-right: 65px; color: white; clear: right">#{login.nameIfLoggedIn()}</p>
     <div style="width:50%; margin: 0 auto;">
       <h1 style="font-size: 50px">GameCouch</h1>
     </div>
@@ -25,8 +25,8 @@
       <a href="index.html">Home</a>
       <a href="aboutus.html">About Us</a>
       <a href="contacts.html">Contact Us</a>
-      <a href="reservations.html">Make A Reservation</a>
-      <a href="login&amp;signup.html">Log In/Sign Up</a>
+      <h:link value="Make a Reservation" outcome="tableReservation" />
+      <h:link value="" outcome="Login" >#{login.link()}</h:link>
    </div>
    <div style="background-color:#C38D9E; text-align:center; padding:5px;">
    </div>
@@ -96,12 +96,11 @@
      </div>
      <br />
      <h:commandButton id="submit" value="Proceed to Checkout"
-			action="#{reservation.create(reservation)}" />
+			action="#{reservation.create(reservation, login.customer)}" /> <!-- move creation this to checkout -->
      <br /><br />
      </div>
     </h:form>
    <h:messages />
-
    <script>
        function getInputValue(){
          var filledOut = true;
@@ -160,5 +159,7 @@
       </div>
     </footer>
     </div>
+    
+Session: #{reservation.getSessionID()}
   </h:body>
   </html>

@@ -6,9 +6,13 @@
 <h:head>
 <title>Login</title>
 <h:outputStylesheet library="css" name="style.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/styles.css" />
 </h:head>
 <h:body id="main">
-<h1>Login</h1>
+
+<h1 style="font-size: 50px">GameCouch</h1>
+<h2>Login</h2>
 <h:form id="Login">
 <h:messages />
 
@@ -23,6 +27,7 @@
 <br/><br/>
 New user? <h:link value="Sign up" outcome="CreateCustomer" />
 
-</h:form>
+</h:form>Session: #{reservation.getSessionID()}<br />
+Login: #{login.email}
 </h:body>
 </html>

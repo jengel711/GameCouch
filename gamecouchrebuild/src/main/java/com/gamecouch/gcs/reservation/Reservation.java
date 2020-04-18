@@ -45,7 +45,6 @@ public class Reservation implements PersistedData {
 		this.duration = duration;
 		this.partySize = partySize;
 		
-		var lookup = new Lookup();
 				
 		this.table = table;
 		this.invoice = invoice;

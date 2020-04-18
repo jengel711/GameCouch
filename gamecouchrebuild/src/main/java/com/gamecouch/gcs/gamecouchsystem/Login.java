@@ -1,37 +1,46 @@
 package com.gamecouch.gcs.gamecouchsystem;
 
+import java.io.Serializable;
 import java.security.GeneralSecurityException;
 import java.util.Date;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-
 /**
  * @author Alan Bolte
  *
  */
 @ManagedBean(name="login")
-@RequestScoped
-public class Login {
+@SessionScoped
+public class Login implements Serializable {
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String email;
-	private String password;
+	private String password; //vulnerability: we're keeping plaintext password in session
 	private Customer customer;
 
 	private static final long MAX_WAIT = 60 * 1000L; //seconds
+	private String testString = "test 123";
 	
 	public Login() {
-		
+
+		System.out.println("Login constructor");
 	}
 
 	public String getEmail() {
+		System.out.println("get" + email);
 		return email;
 	}
 
 	public void setEmail(String identifier) {
 		this.email = identifier.strip();
+		System.out.println("set" + email);
 	}
 
 	public String getPassword() {
@@ -75,7 +84,7 @@ public class Login {
 		}
 		
 		if (validate)
-			return "Profile";
+			return "tableReservation"; //TODO: figure out how to get back to any page
 		else {
 			return showError("Unknown username or bad password.");
 		}
@@ -86,5 +95,40 @@ public class Login {
 		FacesContext.getCurrentInstance().addMessage("form:message", message);
 		return "Login";
 	}
+	
+	public String nameIfLoggedIn() {
+		if (customer == null) {
+			return "Welcome to GameCouch";
+		}
+		else
+			return ("Hello, " + customer.getName());
+			
+	}
+	
+	public String link() {
+		if (customer == null) {
+			return "Log In/Sign Up";
+		}
+		else
+			return "Log Out";
+	}
 
+	public String loginLogout() {
+		if (customer == null) {
+			return "Login";
+		}
+		else {
+			FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+			return "tableReservation?faces-redirect=true";
+		}
+			
+	}
+
+	public String getTestString() {
+		return testString;
+	}
+
+	public void setTestString(String testString) {
+		this.testString = testString;
+	}
 }

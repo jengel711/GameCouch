@@ -7,104 +7,116 @@
 	<title>New Journal Entry</title>
 	<h:outputStylesheet library="css" name="journal.css" />
 	<h:outputScript library="js" name="jquery-3.4.1.js" />
+	<style>
+	body{
+		background-color: gray;
+	}
+	</style>
 </h:head>
 <f:metadata>
 	<f:event listener="#{journal.getNextId()}" type="preRenderView" />
 </f:metadata>
 <h:body id="main">
-
-	<h1>New Journal Entry</h1>
-	<h:form id="NewJournal">
-
-
-		<label>Journal Number </label>
-		<h:inputText id="entry" value="#{journal.id}" required="true">
-			<f:validateLongRange minimum="1" />
-		</h:inputText>
-		<br />
-		<br />
-
-		<label>Journal Date </label>
-
-		<input type="date" jsf:id="date" jsf:value="#{journal.date}"
-			required="required">
-		<f:convertDateTime pattern="yyyy-MM-dd" />
-		</input>
-
-		<br />
-		<br />
-		<h:dataTable id="linesTable" value="#{lineCollection.lines}" var="l"
-			styleClass="table" headerClass="table-header"
-			rowClasses="table-odd-row,table-even-row">
-
-			<h:column>
-				<f:facet name="header">#</f:facet>
-				<h:outputText value="#{l.lineNumber}"></h:outputText>
-			</h:column>
-
-			<h:column>
-				<f:facet name="header">Account</f:facet>
-				<h:selectOneMenu id="Account" value="#{l.account}">
-					<f:selectItems value="#{journal.getAccounts()}" var="account"
-						itemValue="#{account}" itemLabel="#{account.name}" />
-				</h:selectOneMenu>
-			</h:column>
-
-			<h:column>
-				<f:facet name="header">Debit</f:facet>
-				<h:inputText value="#{l.debit}">
-					<f:validateDoubleRange minimum="0.01" />
-				</h:inputText>
-			</h:column>
-
-			<h:column>
-				<f:facet name="header">Credit</f:facet>
-				<h:inputText value="#{l.credit}">
-					<f:validateDoubleRange minimum="0.01" />
-				</h:inputText>
-
-			</h:column>
-
-
-
-			<h:column>
-				<f:facet name="header">Description</f:facet>
-				<h:inputText value="#{l.description}"></h:inputText>
-			</h:column>
-			<h:column>
-				<f:facet name="header"></f:facet>
-				<h:commandButton id="delete" value="Delete Row"
-					action="#{lineCollection.delete(l)}"></h:commandButton>
-
-			</h:column>
-
-			<f:facet name="footer">
-				<h:panelGroup>
-					<h:commandButton value="Add Row"
-						action="#{lineCollection.addLine()}" />
-					<h:commandButton id="submit" value="Save Journal Entry"
-						action="#{journal.create(journal, lineCollection)}" />
-					<a id="clear" href="#">Clear</a>
-				</h:panelGroup>
-			</f:facet>
-		</h:dataTable>
-
-		<br />
-		<br />
-
-
-
-
-	</h:form>
-	<h:message for="NewJournal" />
-	<script>
-	$(document).ready(function() {
-		$("#clear").on('click', function(){$("#NewJournal\\:linesTable :text").val('');});
+	<div style="margin: auto; width: 850px; border: 8px solid #C38D9E; padding: 10px; background-color: #FFE5B4">
+		<div style="margin: auto; width: 300px;">
+			<img src="img/couchLogo.png" alt="CouchLogo" height="250" width="300" style="border: 2px solid black"/>
+		</div>
+		<div>
+			<h1>New Journal Entry</h1>
+			<h:form id="NewJournal">
 		
-	});
-	
-	</script>
-
-	<h:link value="Home" outcome="Accounting" />
+		
+				<label>Journal Number </label>
+				<h:inputText id="entry" value="#{journal.id}" required="true">
+					<f:validateLongRange minimum="1" />
+				</h:inputText>
+				<br />
+				<br />
+		
+				<label>Journal Date </label>
+		
+				<input type="date" jsf:id="date" jsf:value="#{journal.date}"
+					required="required">
+				<f:convertDateTime pattern="yyyy-MM-dd" />
+				</input>
+		
+				<br />
+				<br />
+				<div style="background-color:white; margin-right:30px">
+					<h:dataTable id="linesTable" value="#{lineCollection.lines}" var="l"
+						styleClass="table" headerClass="table-header"
+						rowClasses="table-odd-row,table-even-row">
+			
+						<h:column>
+							<f:facet name="header">#</f:facet>
+							<h:outputText value="#{l.lineNumber}"></h:outputText>
+						</h:column>
+			
+						<h:column>
+							<f:facet name="header">Account</f:facet>
+							<h:selectOneMenu id="Account" value="#{l.account}">
+								<f:selectItems value="#{journal.getAccounts()}" var="account"
+									itemValue="#{account}" itemLabel="#{account.name}" />
+							</h:selectOneMenu>
+						</h:column>
+			
+						<h:column>
+							<f:facet name="header">Debit</f:facet>
+							<h:inputText value="#{l.debit}">
+								<f:validateDoubleRange minimum="0.01" />
+							</h:inputText>
+						</h:column>
+			
+						<h:column>
+							<f:facet name="header">Credit</f:facet>
+							<h:inputText value="#{l.credit}">
+								<f:validateDoubleRange minimum="0.01" />
+							</h:inputText>
+			
+						</h:column>
+			
+			
+			
+						<h:column>
+							<f:facet name="header">Description</f:facet>
+							<h:inputText value="#{l.description}"></h:inputText>
+						</h:column>
+						<h:column>
+							<f:facet name="header"></f:facet>
+							<h:commandButton id="delete" value="Delete Row"
+								action="#{lineCollection.delete(l)}"></h:commandButton>
+			
+						</h:column>
+				
+					<f:facet name="footer">
+						<h:panelGroup>
+							<h:commandButton value="Add Row"
+								action="#{lineCollection.addLine()}" />
+							<h:commandButton id="submit" value="Save Journal Entry"
+								action="#{journal.create(journal, lineCollection)}" />
+							<a id="clear" href="#">Clear</a>
+						</h:panelGroup>
+					</f:facet>
+				</h:dataTable>
+				</div>
+				<br />
+				<br />
+		
+		
+		
+		
+			</h:form>
+			<h:message for="NewJournal" />
+			<script>
+			$(document).ready(function() {
+				$("#clear").on('click', function(){$("#NewJournal\\:linesTable :text").val('');});
+				
+			});
+			
+			</script>
+		
+			<h:link value="Home" outcome="Accounting" />
+		</div>
+	</div>
 </h:body>
 </html>
