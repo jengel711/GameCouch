@@ -17,26 +17,28 @@
 			<img src="img/couchLogo.png" alt="CouchLogo" height="250" width="300" style="border: 2px solid black"/>
 			<h1>General Journal</h1>
 			<!-- TODO: select date range -->
-		
-			<h:dataTable value="#{journalReport.entries}" var="l"
-				styleClass="table" headerClass="table-header"
-				rowClasses="table-odd-row,table-even-row">
-		
-				<h:column>
-					<f:facet name="header">#</f:facet>				
-		    				#{l.id}
-		    			</h:column>
-		
-				<h:column>
-					<f:facet name="header">Date</f:facet>
-		    				#{l.shortDate()}
-		    			</h:column>
-		
-				<h:column>
-					<h:link value="View Entry" outcome="GenJournalEntry?q=#{l.id}"></h:link>
-				</h:column>
-		
-			</h:dataTable>
+			
+			<div style="background-color:white; margin-right:100px">
+				<h:dataTable value="#{journalReport.entries}" var="l"
+					styleClass="table" headerClass="table-header"
+					rowClasses="table-odd-row,table-even-row">
+			
+					<h:column>
+						<f:facet name="header">#</f:facet>				
+			    				#{l.id}
+			    			</h:column>
+			
+					<h:column>
+						<f:facet name="header">Date</f:facet>
+			    				#{l.shortDate()}
+			    			</h:column>
+			
+					<h:column>
+						<h:link value="View Entry" outcome="GenJournalEntry?q=#{l.id}"></h:link>
+					</h:column>
+			
+				</h:dataTable>
+			</div>
 		<h:link value="Home" outcome="Accounting"/>
 		</div>
 	</div>
