@@ -25,7 +25,6 @@
 			<br /><br />
 		
 			<h:form>
-				<label>View Report: </label>
 				<h:selectOneMenu value="#{accounting.report}">
 					<f:selectItem itemValue="1" itemLabel="Balance Sheet" />
 		
@@ -35,7 +34,7 @@
 				</h:selectOneMenu>
 				<br />
 		
-				<h:commandButton id="submit" value="Submit"
+				<h:commandButton id="submit" value="View Report"
 					action="#{accounting.viewReport()}" />
 			</h:form>
 		</div>
