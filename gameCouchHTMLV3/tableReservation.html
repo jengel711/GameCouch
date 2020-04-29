@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GameCouch</title>
+<style>
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="title">
+    <img src="img/couchLogo.png" alt="CouchLogo" class="logo">
+    <div class="slides">
+      <img src="img/risk.jpg" alt="Slide 4" />
+      <img src="img/7wonders.jpg" alt="Slide 3" />
+      <img src="img/catan.jpg" alt="Slide 2" />
+      <img src="img/dominion.jpg" alt="Slide 1" />
+    </div>
+    <div style="width:50%; margin: 0 auto;">
+      <h1 style="font-size: 50px">GameCouch</h1>
+    </div>
+  </div>
+
+ <div class="header" id="myHeader">
+   <div class="topnav">
+      <a href="index.html">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="contacts.html">Contact Us</a>
+      <a href="reservations.html">Make A Reservation</a>
+      <a href="FAQ.html">FAQ</a>
+   </div>
+   <div style="background-color:#C38D9E; text-align:center; padding:5px;">
+   </div>
+ </div>
+
+ <script>
+   window.onscroll = function() {myFunction()};
+   var header = document.getElementById("myHeader");
+   var sticky = header.offsetTop;
+   function myFunction() {
+     if (window.pageYOffset > sticky) {
+       header.classList.add("sticky");
+     } else {
+       header.classList.remove("sticky");
+     }
+   }
+ </script>
+
+ <div>
+   <h2 style="text-align:center">Reserve a Table</h2>
+
+   <form name="tableFrm" action="tableCheckout.html">
+   <div style="padding-left:170px; padding-right:170px">
+     <div style="float:left">
+       <label style="font-size: 20px">1. Reservation Date:</label>
+       <br>
+       <input style="font-size: 15px" type="date" name="reservationDate" id="reservationDate">
+     </div>
+     <div style="float:right">
+       <label style="font-size: 20px;">3. Reservation Time:</label>
+       <br>
+        <select name="reservationTime" id="reservationTime" multiple style="font-size: 15px" size="5">
+        <option value ="12pm-2pm">12:00pm to 2:00pm</option>
+        <option value ="2pm-4pm">2:00pm to 4:00pm</option>
+        <option value ="4pm-6pm">4:00pm to 6:00pm</option>
+        <option value ="6pm-8pm">6:00pm to 8:00pm</option>
+        <option value ="8pm-10pm">8:00pm to 10:00pm</option>
+        </select>
+     </div>
+     <br><br><br>
+
+     <div>
+       <label style="font-size: 20px">2. Pick a Table:</label>
+       <br><br>
+       <label>
+         <input type="radio" name="table" id="table" value="1" checked>
+         <img src="img/tableFor8.png" alt="TableFor8" style="height:200px; width:350px;">
+       </label>
+
+       <label>
+         <input type="radio" name="table" id="table" value="2">
+         <img src="img/tableFor4.png" alt="TableFor4" style="height:200px; width:200px; margin-left:20px">
+       </label>
+       <br>
+       <label>
+         <input type="radio" name="table" id="table" value="3">
+         <img src="img/tableFor8.png" alt="TableFor8" style="height:200px; width:350px;">
+       </label>
+
+       <label>
+         <input type="radio" name="table" id="table" value="4">
+         <img src="img/tableFor4.png" alt="TableFor4" style="height:200px; width:200px; margin-left:20px">
+       </label>
+
+     </div>
+     <br>
+     <button type="button" style="font-size:15px" onclick="getInputValue();">Proceed to Checkout</button>
+     <br><br>
+    </form>
+   </div>
+
+   <script>
+       function getInputValue(){
+         var filledOut = true;
+         var x = document.getElementById("reservationTime").value;
+         if(x == ""){
+           filledOut = false;
+         }
+         x = document.getElementById("reservationDate").value;
+         if(x == ""){
+           filledOut = false;
+         }
+
+         if(filledOut == true){
+           document.tableFrm.submit();
+         }else{
+           alert("You must make a date, time and table selection.");
+         }
+
+       }
+   </script>
+
+
+
+   <div style="background-color:#C38D9E; text-align:center; padding:5px;">
+   </div>
+    <footer>
+      <div class="row">
+        <div class="column">
+          <h2>Connect With Us:</h2>
+          <a href="https://www.facebook.com/gamecouchstore/">
+          <img border="0" alt="FacebookLink" src="img/facebookLink.png" width="75" height="75"></a>
+          <p>Phone: 1-614-972-2440<br>
+             Email: GameCouch@gmail.com<br>
+             Address: 7272 Made Up Blvd, NY, 12345</p>
+          <p>GameCouch | Copyright &copy;1990</p>
+        </div>
+        <div class="column">
+          <h2>Navigate:</h2>
+          <a class="active" href="index.html">Home</a><br>
+          <a href="aboutus.html">About Us</a><br>
+          <a href="contacts.html">Contact Us</a><br>
+          <a href="reservations.html">Make A Reservation</a><br>
+          <a href="FAQ.html">FAQ</a><br>
+        </div>
+        <div class="column">
+          <h2>Marketing Links:</h2>
+          <a href="marketingDocuments/April 2020 Events Newsletter (external).docx" download>April 2020 Events Newsletter</a><br>
+          <a href="marketingDocuments/challenger deckad gamecouch(external).png" download>Challenger Deckpad</a><br>
+          <a href="marketingDocuments/Brochure (external).docx" download>Services Offered</a><br>
+          <a href="marketingDocuments/gamecouch businesscard (external).png" download>GameCouch Businesscard</a><br>
+          <a href="marketingDocuments/In Store Rules (external_internal).docx" download>In Store Rules</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+  </html>

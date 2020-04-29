@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GameCouch</title>
+<style>
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="title">
+    <img src="img/couchLogo.png" alt="CouchLogo" class="logo">
+    <div class="slides">
+      <img src="img/risk.jpg" alt="Slide 4" />
+      <img src="img/7wonders.jpg" alt="Slide 3" />
+      <img src="img/catan.jpg" alt="Slide 2" />
+      <img src="img/dominion.jpg" alt="Slide 1" />
+    </div>
+    <div style="width:50%; margin: 0 auto;">
+      <h1 style="font-size: 50px">GameCouch</h1>
+    </div>
+  </div>
+
+ <div class="header" id="myHeader">
+   <div class="topnav">
+      <a class="active" href="index.html">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="contacts.html">Contact Us</a>
+      <a href="reservations.html">Make A Reservation</a>
+      <a href="FAQ.html">FAQ</a>
+   </div>
+   <div style="background-color:#C38D9E; text-align:center; padding:5px;">
+   </div>
+ </div>
+
+ <script>
+   window.onscroll = function() {myFunction()};
+   var header = document.getElementById("myHeader");
+   var sticky = header.offsetTop;
+   function myFunction() {
+     if (window.pageYOffset > sticky) {
+       header.classList.add("sticky");
+     } else {
+       header.classList.remove("sticky");
+     }
+   }
+
+   function geturlvar() {
+     var vars = {};
+     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+       vars[key] = value;
+     });
+     return vars;
+   }
+
+   var resDate = geturlvar()["reservationDate"];
+   var resTime = geturlvar()["reservationTime"];
+   var resTable = geturlvar()["table"];
+ </script>
+
+ <div class="content">
+   <h2>Checkout</h2>
+   <hr>
+   <div class="row2">
+     <div class="column3">
+       <br><br><br><br><br>
+       <h2 style="text-align: center;">Purchase Summary</h2>
+       <div style="text-align:center">
+         <p id="date"></p>
+         <p id="time"></p>
+         <p id="table"></p>
+         <p id="price"></p>
+         <p>Need to change something? <a href="tableReservation.html">Go Back<a></p>
+       </div>
+     </div>
+     <div class="column3">
+       <div class="container">
+         <form action="/action_page.php">
+             <div class="login">
+               <h3>Payment</h3>
+               <label for="cname">Name on Card</label>
+               <input type="text" id="cname" name="cardname" placeholder="John More Doe"><br>
+               <label for="ccnum">Credit card number</label>
+               <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444"><br>
+               <label for="expmonth">Exp Month</label>
+               <input type="text" id="expmonth" name="expmonth" placeholder="September">
+
+               <div>
+                 <div>
+                   <label for="expyear">Exp Year</label>
+                   <input type="text" id="expyear" name="expyear" placeholder="2018">
+                 </div>
+                 <div>
+                   <label for="cvv">CVV</label>
+                   <input type="text" id="cvv" name="cvv" placeholder="352"><br><br>
+                   <button type="button" onclick="confirmReservation();">Place Your Reservation</button>
+
+                 </div>
+               </div>
+             </div>
+           </div>
+         </form>
+       </div>
+     </div>
+     </div>
+   </div>
+ </div>
+
+</div>
+
+<script>
+  function confirmReservation(){
+    alert("Your reservation has been placed.\nWe will see you on " + resDate + ", from " + resTime + ", at table " + resTable + ".\nReturning to the reservation page.\nThank you!");
+    window.location = "reservations.html";
+  }
+</script>
+
+<script>
+  document.getElementById("date").innerHTML = "<b><u>Reservation Date:</u></b> " + resDate;
+  document.getElementById("time").innerHTML = "<b><u>Reservation Time:</u></b> " + resTime;
+  document.getElementById("table").innerHTML = "<b><u>Selected Table:</u></b> " + resTable;
+  var tablePrice;
+  if(resTable == "1" || resTable == "3"){
+    tablePrice = "$50";
+  }else{
+    tablePrice = "$25";
+  }
+  document.getElementById("price").innerHTML = "<b><u>Total:</u></b> " + tablePrice;
+</script>
+
+<div style="background-color:#C38D9E; text-align:center; padding:5px;">
+</div>
+  <footer>
+    <div class="row">
+      <div class="column">
+        <h2>Connect With Us:</h2>
+        <a href="https://www.facebook.com/gamecouchstore/">
+        <img border="0" alt="FacebookLink" src="img/facebookLink.png" width="75" height="75"></a>
+        <p>Phone: 1-614-972-2440<br>
+           Email: GameCouch@gmail.com<br>
+           Address: 7272 Made Up Blvd, NY, 12345</p>
+        <p>GameCouch | Copyright &copy;1990</p>
+      </div>
+      <div class="column">
+        <h2>Navigate:</h2>
+        <a class="active" href="index.html">Home</a><br>
+        <a href="aboutus.html">About Us</a><br>
+        <a href="contacts.html">Contact Us</a><br>
+        <a href="reservations.html">Make A Reservation</a><br>
+        <a href="FAQ.html">FAQ</a><br>
+      </div>
+      <div class="column">
+        <h2>Marketing Links:</h2>
+        <a href="marketingDocuments/April 2020 Events Newsletter (external).docx" download>April 2020 Events Newsletter</a><br>
+        <a href="marketingDocuments/challenger deckad gamecouch(external).png" download>Challenger Deckpad</a><br>
+        <a href="marketingDocuments/Brochure (external).docx" download>Services Offered</a><br>
+        <a href="marketingDocuments/gamecouch businesscard (external).png" download>GameCouch Businesscard</a><br>
+        <a href="marketingDocuments/In Store Rules (external_internal).docx" download>In Store Rules</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

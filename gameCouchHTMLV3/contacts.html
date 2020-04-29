@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="css/styles.css">
+<title>contacts</title>
+<style>
+</style>
+</head>
+<body>
+
+  <div class="title">
+    <img src="img/couchLogo.png" alt="CouchLogo" class="logo">
+    <div class="slides">
+      <img src="img/risk.jpg" alt="Slide 4" />
+      <img src="img/7wonders.jpg" alt="Slide 3" />
+      <img src="img/catan.jpg" alt="Slide 2" />
+      <img src="img/dominion.jpg" alt="Slide 1" />
+    </div>
+    <div style="width:50%; margin: 0 auto;">
+      <h1 style="font-size: 50px">GameCouch</h1>
+    </div>
+  </div>
+
+  <div class="header" id="myHeader">
+    <div class="topnav">
+       <a href="index.html">Home</a>
+       <a href="aboutus.html">About Us</a>
+       <a class="active" href="contacts.html">Contact Us</a>
+       <a href="reservations.html">Make A Reservation</a>
+       <a href="FAQ.html">FAQ</a>
+    </div>
+    <div style="background-color:#C38D9E; text-align:center; padding:5px;">
+    </div>
+  </div>
+
+  <script>
+    window.onscroll = function() {myFunction()};
+    var header = document.getElementById("myHeader");
+    var sticky = header.offsetTop;
+    function myFunction() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    }
+  </script>
+
+
+<div class="content">
+  <h2>Our Contact Information</h2>
+  <h3>Have more questions about us or our games? We understand.
+  Our website has a lot of information, but with a whole world of games and experiences,
+  we might have missed what you were looking for.
+</h3>
+  <h3>Whether you’re ready to schedule, buy, rent or want to learn more about GameCouch,
+  you can connect with us using the method that’s easiest for you below:</h3>
+  <ul>
+  <li><b>Email:</b> GameCouch@gmail.com</li><br>
+  <li>
+    <b>Location:</b> Long Island<br>
+    <b>Address:</b> 7272 Made Up Blvd, Uniondale, New York 12345<br>
+    <b>Phone Number:</b> (111) 111-1111
+  </li>
+  <br>
+  <li>
+    <b>Location:</b> Manhattan<br>
+    <b>Address:</b> 43421 Not Real St New York, New York 10004<br>
+    <b>Phone Number:</b> (222) 222-2222
+  </li>
+  <br>
+  <li>
+    <b>Location:</b> Connecticut<br>
+    <b>Address:</b> 33 Margarine St Norwich, Connecticut 06360<br>
+    <b>Phone Number:</b> (333) 333-3333
+  </li>
+  <br>
+  <li>
+    <b>Location:</b> Maine<br>
+    <b>Address:</b> 444 Underdark Ave Lewiston, Maine 04241<br>
+    <b>Phone Number:</b> (444) 444-4444
+  </li>
+  <br>
+  <li>
+    <b>Location:</b> Pennsylvania<br>
+    <b>Address:</b> 5500 N. Secret Ln Norristown, Pennsylvania 19409<br>
+    <b>Phone Number:</b> (555) 555-5555
+  </li>
+  <br>
+  <li>
+    <b>Location:</b> Ohio<br>
+    <b>Address:</b> 6060 Undefined Blvd Columbus, Ohio 43228<br>
+    <b>Phone Number:</b> (666) 666-6666
+  </li>
+  </ul>
+  <hr>
+
+  <h3>If you have any any questions or concerns, please complete the form below so we can provide quick and satisfactory service.</h3>
+
+
+    First Name:<br>
+    <input type="text" id="fname"><br>
+    Last Name:<br>
+    <input type="text" id="lname"><br>
+    Email Address:<br>
+    <input type="text" id="email"><br>
+    Comments:<br>
+    <textarea id="comments" rows="5" cols="21"></textarea><br>
+    <button type="button" onclick="getInputValue();">Send</button>
+
+    <script>
+        function getInputValue(){
+          var filledOut = true;
+          var x = document.getElementById("fname").value;
+          if(x == ""){
+            filledOut = false;
+          }
+          x = document.getElementById("lname").value;
+          if(x == ""){
+            filledOut = false;
+          }
+          x = document.getElementById("email").value;
+          if(x == ""){
+            filledOut = false;
+          }
+          x = document.getElementById("comments").value;
+          if(x == ""){
+            filledOut = false;
+          }
+
+          if(filledOut == true){
+            document.getElementById("fname").value = "";
+            document.getElementById("lname").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("comments").value = "";
+            alert("Your comment has been submitted.\nA response can take anywhere from 24-72 hours.\nResponse will be sent to the email provided.");
+          }else{
+            alert("All boxes must be filled out.");
+          }
+
+        }
+    </script>
+
+</div>
+
+<div style="background-color:#C38D9E; text-align:center; padding:5px;">
+</div>
+ <footer>
+   <div class="row">
+     <div class="column">
+       <h2>Connect With Us:</h2>
+       <a href="https://www.facebook.com/gamecouchstore/">
+       <img border="0" alt="FacebookLink" src="img/facebookLink.png" width="75" height="75"></a>
+       <p>Phone: 1-614-972-2440<br>
+          Email: GameCouch@gmail.com<br>
+          Address: 7272 Made Up Blvd, NY, 12345</p>
+       <p>GameCouch | Copyright &copy;1990</p>
+     </div>
+     <div class="column">
+       <h2>Navigate:</h2>
+       <a class="active" href="index.html">Home</a><br>
+       <a href="aboutus.html">About Us</a><br>
+       <a href="contacts.html">Contact Us</a><br>
+       <a href="reservations.html">Make A Reservation</a><br>
+       <a href="FAQ.html">FAQ</a><br>
+     </div>
+     <div class="column">
+       <h2>Marketing Links:</h2>
+       <a href="marketingDocuments/April 2020 Events Newsletter (external).docx" download>April 2020 Events Newsletter</a><br>
+       <a href="marketingDocuments/challenger deckad gamecouch(external).png" download>Challenger Deckpad</a><br>
+       <a href="marketingDocuments/Brochure (external).docx" download>Services Offered</a><br>
+       <a href="marketingDocuments/gamecouch businesscard (external).png" download>GameCouch Businesscard</a><br>
+       <a href="marketingDocuments/In Store Rules (external_internal).docx" download>In Store Rules</a>
+       </p>
+     </div>
+   </div>
+ </footer>
+</body>
+</html>

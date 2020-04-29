@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us</title>
+<style>
+</style>
+ <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="title">
+    <img src="img/couchLogo.png" alt="CouchLogo" class="logo">
+    <div class="slides">
+      <img src="img/risk.jpg" alt="Slide 4" />
+      <img src="img/7wonders.jpg" alt="Slide 3" />
+      <img src="img/catan.jpg" alt="Slide 2" />
+      <img src="img/dominion.jpg" alt="Slide 1" />
+    </div>
+    <div style="width:50%; margin: 0 auto;">
+      <h1 style="font-size: 50px">GameCouch</h1>
+    </div>
+  </div>
+
+  <div class="header" id="myHeader">
+    <div class="topnav">
+       <a href="index.html">Home</a>
+       <a href="aboutus.html">About Us</a>
+       <a href="contacts.html">Contact Us</a>
+       <a href="reservations.html">Make A Reservation</a>
+       <a class="active" href="FAQ.html">FAQ</a>
+    </div>
+    <div style="background-color:#C38D9E; text-align:center; padding:5px;">
+    </div>
+  </div>
+
+  <script>
+    window.onscroll = function() {myFunction()};
+    var header = document.getElementById("myHeader");
+    var sticky = header.offsetTop;
+    function myFunction() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    }
+  </script>
+
+<div class="content">
+  <h2>Frequently Asked Questions(FAQ)</h2>
+
+  <div style="background-color:white; padding-left:50px; padding-right:50px; padding-top:20px; padding-bottom:20px; margin:50px; border: 2px dashed">
+    <h3>Can I come in and test out a game?</h3>
+    <p style="color:gray;">Yes, we have a wide assortment of games to come in and test out or just rent-to-play. You can come in and pick a game from our selection or reserve a copy through our online reservation system to have waiting for you at your table.</p>
+    <h3>Can we reserve a table to play at?</h3>
+    <p style="color:gray;">Yes, you can reserve a table using our online system or by booking with one of our valued NPCs.</p>
+    <h3>How do I reserve a table?</h3>
+    <p style="color:gray;">Use our online portal or speak with one of our valued NPCs to book a space for your party to play.</p>
+    <h3>Can I preorder new release games?</h3>
+    <p style="color:gray;">Yes, a deposit for half of the game’s value will be held and is nonrefundable a week before the game is set to be released.</p>
+    <h3>How much does reserving a table cost?</h3>
+    <p style="color:gray;">It costs $30.00 per hour to rent a small table and $50.00 per hour to rent a large table.</p>
+    <h3>What is the return policy?</h3>
+    <p style="color:gray;">GameCouch offers a 60 day return policy for most items. Proof of purchase such as a receipt or order confirmation number is required.</p>
+    <h3>How can I contact you?</h3>
+    <p style="color:gray;"><a href="contacts.html">Click Here</a><br></p>
+    <h3>Can I bring outside food and drink?</h3>
+    <p style="color:gray;">Outside drinks are allowed as long as they are in a spill proof container. We do ask that you leave outside food at home.</p>
+    <h3>How do I create an account?</h3>
+    <p style="color:gray;">Select that you would like to create an account from the login page of the GameCouch website. Follow the instructions provided and fill in the information requested in order to create an account.</p>
+
+    </div>
+</div>
+
+<div style="background-color:#C38D9E; text-align:center; padding:5px;">
+</div>
+<footer>
+  <div class="row">
+    <div class="column">
+      <h2>Connect With Us:</h2>
+      <a href="https://www.facebook.com/gamecouchstore/">
+      <img border="0" alt="FacebookLink" src="img/facebookLink.png" width="75" height="75"></a>
+      <p>Phone: 1-614-972-2440<br>
+         Email: GameCouch@gmail.com<br>
+         Address: 7272 Made Up Blvd, NY, 12345</p>
+      <p>GameCouch | Copyright &copy;1990</p>
+    </div>
+    <div class="column">
+      <h2>Navigate:</h2>
+      <a class="active" href="index.html">Home</a><br>
+      <a href="aboutus.html">About Us</a><br>
+      <a href="contacts.html">Contact Us</a><br>
+      <a href="reservations.html">Make A Reservation</a><br>
+      <a href="FAQ.html">FAQ</a><br>
+    </div>
+    <div class="column">
+      <h2>Marketing Links:</h2>
+      <a href="marketingDocuments/April 2020 Events Newsletter (external).docx" download>April 2020 Events Newsletter</a><br>
+      <a href="marketingDocuments/challenger deckad gamecouch(external).png" download>Challenger Deckpad</a><br>
+      <a href="marketingDocuments/Brochure (external).docx" download>Services Offered</a><br>
+      <a href="marketingDocuments/gamecouch businesscard (external).png" download>GameCouch Businesscard</a><br>
+      <a href="marketingDocuments/In Store Rules (external_internal).docx" download>In Store Rules</a>
+      </p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
