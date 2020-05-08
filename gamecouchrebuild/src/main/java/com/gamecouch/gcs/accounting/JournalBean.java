@@ -4,6 +4,7 @@
 package com.gamecouch.gcs.accounting;
 
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -72,29 +73,62 @@ public class JournalBean {
 	}
 	
 	public String create(JournalBean journal, LineCollectionBean lineBean) {
-		if (entry == null) {
-			entry = new JournalEntry();
-			entry.setId(journal.getId());
-			entry.setDate(journal.getDate());			
-		}
+		boolean valid = validateJournal(journal, lineBean);
 		
-		entry.create();
-		
-		for (JournalLine line : lineBean.getLines()) {	
-			line.setJournal(entry);
-			lookup.create(line);
-		}
-		
-		if(validateJournal())
+		if(valid) {
+			if (entry == null) {
+				entry = new JournalEntry();
+				entry.setId(journal.getId());
+				entry.setDate(journal.getDate());			
+			}
+			
+			entry.create();
+			
+			for (JournalLine line : lineBean.getLines()) {	
+				line.setJournal(entry);
+				lookup.create(line);
+			}
+			
+			
 			FacesContext.getCurrentInstance().addMessage("NewJournal", new FacesMessage(FacesMessage.SEVERITY_INFO,"Success", "Created journal entry " + entry.getId()));
+			
+		}
 		
+
 		lineBean.init();
 		
-		return "NewJournalEntryResult"; //TODO: results page, with buttons to choose between making another entry or navigating elsewhere.
+		return "NewJournalEntryResult";
 	}
 	
-	private boolean validateJournal( ) {
-		return true; //TODO: implement. review JSF validator?
+	private boolean validateJournal(JournalBean journal, LineCollectionBean lineBean) {
+		//TODO: refactor to deal with nulls
+		/*
+		for (JournalLine line : lineBean.getLines()) {	
+			if (line.getCredit().doubleValue() < 0.0 || line.getDebit().doubleValue() < 0.0) {
+				FacesContext.getCurrentInstance().addMessage("NewJournal", new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error", "Values must be positive"));
+				return false;
+			}	
+			
+				
+		}
+		
+		BigDecimal credit = new BigDecimal(0);
+		BigDecimal debit = new BigDecimal(0);
+		
+		for (JournalLine line : lineBean.getLines()) {	
+			credit.add(line.getCredit());		
+			debit.add(line.getDebit());
+			
+		}	
+			
+		if (credit.doubleValue() != debit.doubleValue()) {
+			FacesContext.getCurrentInstance().addMessage("NewJournal", new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error", "Total credits must equal total debits."));
+			return false;
+		}
+		*/
+		
+		
+		return true;
 	}
 	
 }

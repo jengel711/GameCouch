@@ -1,11 +1,16 @@
 package com.gamecouch.gcs.reservation;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
 
 import org.hibernate.Session;
+
+import com.gamecouch.gcs.accounting.JournalEntry;
+import com.gamecouch.gcs.accounting.JournalLine;
 import com.gamecouch.gcs.accounting.ReservationInvoice;
 
 import com.gamecouch.gcs.gamecouchsystem.*;
@@ -102,6 +107,6 @@ public class Reservation implements PersistedData {
 		this.invoice = invoice;
 	}
 	
-
+	
 	
 }

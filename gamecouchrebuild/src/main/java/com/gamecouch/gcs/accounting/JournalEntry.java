@@ -46,7 +46,24 @@ public class JournalEntry implements com.gamecouch.gcs.gamecouchsystem.Persisted
 		this.date = date;
 	}
 
-	public List<JournalLine> getLines() {
+	public List<JournalLine> getLines() {//TODO: this doesn't work. why?
+		if (lines == null) {
+			System.out.println("retrieving journal lines");
+			var look = new Lookup();
+			
+			
+			List<JournalLine> table = (List<JournalLine>) look.getTable(JournalLine.class);
+			lines =  table; //TODO: needs optimization
+			lines.clear(); 
+			for (JournalLine line : table) {
+				System.out.println(line.getId());
+				if (line.getJournal() == this) {
+					lines.add(line);
+				}
+			}
+		}
+			
+			
 		return lines;
 	}
 

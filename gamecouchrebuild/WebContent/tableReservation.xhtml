@@ -67,6 +67,14 @@
         <f:selectItem itemValue ="6" itemLabel="6:00pm to 8:00pm"/>
         <f:selectItem itemValue ="8" itemLabel="8:00pm to 10:00pm"/>
         </h:selectManyListbox>
+        <br /><br />
+        <label style="font-size: 20px;">4. Location:</label>
+       <br />
+        <h:selectOneMenu value = "#{reservation.location}"> 
+  			<f:selectItems value = "#{location.getLocations()}" var="location" itemValue="#{location}" itemLabel="#{location.name}"/> 
+  			
+		</h:selectOneMenu> <br/>
+		<!-- default location not implemented -->
      </div>
      <br /><br /><br />
 
@@ -96,7 +104,7 @@
      </div>
      <br />
      <h:commandButton id="submit" value="Proceed to Checkout"
-			action="#{reservation.create(reservation, login.customer)}" /> <!-- move creation this to checkout -->
+			action="#{reservation.create(reservation, login.customer)}" /> 
      <br /><br />
      </div>
     </h:form>
@@ -160,6 +168,5 @@
     </footer>
     </div>
     
-Session: #{reservation.getSessionID()}
   </h:body>
   </html>

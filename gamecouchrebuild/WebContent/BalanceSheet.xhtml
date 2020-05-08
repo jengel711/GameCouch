@@ -77,8 +77,9 @@
 		
 			</h:dataTable>
 			<h3 style="background-color:#E0FFFF;">Total assets</h3>
-			
-		#{balance.totalAssets}
+			<h:outputFormat value="{0,number,currency}" >
+						<f:param value="#{balance.totalAssets}"></f:param>
+					</h:outputFormat>
 			<h2 style="background-color:#4169E1; color:white">Liabilities</h2>
 		
 			<h3 style="background-color:#E0FFFF;">Current liabilities</h3>
@@ -99,14 +100,21 @@
 			</h:dataTable>
 		
 			<h3 style="background-color:#E0FFFF;">Total liabilities</h3>
-			#{balance.totalLiabilities}
-		
+			
+			<h:outputFormat value="{0,number,currency}" >
+						<f:param value="#{balance.totalLiabilities}"></f:param>
+					</h:outputFormat>
 		
 			<h2 style="background-color:#4169E1; color:white">Equity</h2>
-			#{balance.equity}
-		
+			
+			<h:outputFormat value="{0,number,currency}" >
+						<f:param value="#{balance.equity}"></f:param>
+					</h:outputFormat>
 			<h3 style="background-color:#E0FFFF;">Total liabilities &amp; equity</h3>
-			#{balance.totalLiabilities + balance.equity}
+			
+			<h:outputFormat value="{0,number,currency}" >
+						<f:param value="#{balance.totalLiabilities + balance.equity}"></f:param>
+					</h:outputFormat>
 		<br /><br />
 		</div>
 		<br/>

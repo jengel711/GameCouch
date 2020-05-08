@@ -5,9 +5,11 @@ package com.gamecouch.gcs.gamecouchsystem;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 //Current pattern holds open a permanent session for lookups. Is this a good design?
 //seems to throw some errors regarding memory leak and connection reset in Tomcat console?
+import org.hibernate.criterion.Restrictions;
 
 import com.gamecouch.gcs.accounting.JournalLine;
 
@@ -25,8 +27,9 @@ public class Lookup {
     		initSession();
     }
     
-    public void close() {
+    public static void close() {
     	session.close();
+    	session = null;
     }
     
     public Session getSession( ) {
@@ -39,6 +42,12 @@ public class Lookup {
 	
 	public Object getRowObjectByID(Class<?> objectClass, long id) {
 		return session.get(objectClass, id);
+	}
+	
+	public Object getRowObjectByStringField(Class<?> objectClass, String field, String value) {
+		Criteria criteria = session.createCriteria(objectClass);
+		return criteria.add(Restrictions.eq(field, value))
+		                             .uniqueResult();
 	}
 	
 	//TODO: database-agnostic implementation (low priority)
